@@ -1,0 +1,210 @@
+{
+  "resolvedId": "C:/Users/Admin/Documents/Projects/Tinashe/trekr/trekr-frontend/node_modules/@ionic/core/components/ion-nav-link.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "/*!\n * (C) Ionic http://ionicframework.com - MIT License\n */\nimport { proxyCustomElement, HTMLElement, h, Host } from '@stencil/core/internal/client';\n\nconst navLink = (el, routerDirection, component, componentProps, routerAnimation) => {\n  const nav = el.closest('ion-nav');\n  if (nav) {\n    if (routerDirection === 'forward') {\n      if (component !== undefined) {\n        return nav.push(component, componentProps, { skipIfBusy: true, animationBuilder: routerAnimation });\n      }\n    }\n    else if (routerDirection === 'root') {\n      if (component !== undefined) {\n        return nav.setRoot(component, componentProps, { skipIfBusy: true, animationBuilder: routerAnimation });\n      }\n    }\n    else if (routerDirection === 'back') {\n      return nav.pop({ skipIfBusy: true, animationBuilder: routerAnimation });\n    }\n  }\n  return Promise.resolve(false);\n};\n\nconst NavLink = /*@__PURE__*/ proxyCustomElement(class NavLink extends HTMLElement {\n  constructor() {\n    super();\n    this.__registerHost();\n    this.onClick = () => {\n      return navLink(this.el, this.routerDirection, this.component, this.componentProps, this.routerAnimation);\n    };\n    this.component = undefined;\n    this.componentProps = undefined;\n    this.routerDirection = 'forward';\n    this.routerAnimation = undefined;\n  }\n  render() {\n    return h(Host, { onClick: this.onClick });\n  }\n  get el() { return this; }\n}, [0, \"ion-nav-link\", {\n    \"component\": [1],\n    \"componentProps\": [16],\n    \"routerDirection\": [1, \"router-direction\"],\n    \"routerAnimation\": [16]\n  }]);\nfunction defineCustomElement$1() {\n  if (typeof customElements === \"undefined\") {\n    return;\n  }\n  const components = [\"ion-nav-link\"];\n  components.forEach(tagName => { switch (tagName) {\n    case \"ion-nav-link\":\n      if (!customElements.get(tagName)) {\n        customElements.define(tagName, NavLink);\n      }\n      break;\n  } });\n}\n\nconst IonNavLink = NavLink;\nconst defineCustomElement = defineCustomElement$1;\n\nexport { IonNavLink, defineCustomElement };\n",
+      "start": 1700143041235,
+      "end": 1700143041392,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1700143041392,
+      "end": 1700143041392,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1700143041392,
+      "end": 1700143041392,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1700143041392,
+      "end": 1700143041392,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1700143041392,
+      "end": 1700143041392,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1700143041392,
+      "end": 1700143041392,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1700143041393,
+      "end": 1700143041393,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1700143041393,
+      "end": 1700143041393,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1700143041393,
+      "end": 1700143041393,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1700143041393,
+      "end": 1700143041393,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1700143041393,
+      "end": 1700143041393,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1700143041393,
+      "end": 1700143041393,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1700143041393,
+      "end": 1700143041393,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1700143041393,
+      "end": 1700143041393,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1700143041393,
+      "end": 1700143041393,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1700143041393,
+      "end": 1700143041393,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1700143041393,
+      "end": 1700143041393,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1700143041393,
+      "end": 1700143041393,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1700143041393,
+      "end": 1700143041393,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1700143041393,
+      "end": 1700143041393,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1700143041393,
+      "end": 1700143041393,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1700143041393,
+      "end": 1700143041394,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1700143041394,
+      "end": 1700143041394,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1700143041394,
+      "end": 1700143041394,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1700143041394,
+      "end": 1700143041394,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1700143041394,
+      "end": 1700143041394,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1700143041394,
+      "end": 1700143041394,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1700143041394,
+      "end": 1700143041394,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1700143041394,
+      "end": 1700143041394,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1700143041394,
+      "end": 1700143041394,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1700143041394,
+      "end": 1700143041394,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1700143041394,
+      "end": 1700143041394,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1700143041394,
+      "end": 1700143041394,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1700143041394,
+      "end": 1700143041394,
+      "order": "normal"
+    }
+  ]
+}

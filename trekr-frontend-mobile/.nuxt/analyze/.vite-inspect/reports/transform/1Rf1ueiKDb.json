@@ -1,0 +1,210 @@
+{
+  "resolvedId": "C:/Users/Admin/Documents/Projects/Tinashe/trekr/trekr-frontend/node_modules/@ionic/core/components/ion-menu-toggle.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "/*!\n * (C) Ionic http://ionicframework.com - MIT License\n */\nimport { proxyCustomElement, HTMLElement, h, Host } from '@stencil/core/internal/client';\nimport { m as menuController } from './index4.js';\nimport { b as getIonMode } from './ionic-global.js';\nimport { u as updateVisibility } from './menu-toggle-util.js';\n\nconst menuToggleCss = \":host(.menu-toggle-hidden){display:none}\";\n\nconst MenuToggle = /*@__PURE__*/ proxyCustomElement(class MenuToggle extends HTMLElement {\n  constructor() {\n    super();\n    this.__registerHost();\n    this.__attachShadow();\n    this.onClick = () => {\n      return menuController.toggle(this.menu);\n    };\n    this.visible = false;\n    this.menu = undefined;\n    this.autoHide = true;\n  }\n  connectedCallback() {\n    this.visibilityChanged();\n  }\n  async visibilityChanged() {\n    this.visible = await updateVisibility(this.menu);\n  }\n  render() {\n    const mode = getIonMode(this);\n    const hidden = this.autoHide && !this.visible;\n    return (h(Host, { onClick: this.onClick, \"aria-hidden\": hidden ? 'true' : null, class: {\n        [mode]: true,\n        'menu-toggle-hidden': hidden,\n      } }, h(\"slot\", null)));\n  }\n  static get style() { return menuToggleCss; }\n}, [1, \"ion-menu-toggle\", {\n    \"menu\": [1],\n    \"autoHide\": [4, \"auto-hide\"],\n    \"visible\": [32]\n  }, [[16, \"ionMenuChange\", \"visibilityChanged\"], [16, \"ionSplitPaneVisible\", \"visibilityChanged\"]]]);\nfunction defineCustomElement$1() {\n  if (typeof customElements === \"undefined\") {\n    return;\n  }\n  const components = [\"ion-menu-toggle\"];\n  components.forEach(tagName => { switch (tagName) {\n    case \"ion-menu-toggle\":\n      if (!customElements.get(tagName)) {\n        customElements.define(tagName, MenuToggle);\n      }\n      break;\n  } });\n}\n\nconst IonMenuToggle = MenuToggle;\nconst defineCustomElement = defineCustomElement$1;\n\nexport { IonMenuToggle, defineCustomElement };\n",
+      "start": 1700143041221,
+      "end": 1700143041365,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1700143041365,
+      "end": 1700143041365,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1700143041365,
+      "end": 1700143041365,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1700143041365,
+      "end": 1700143041365,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1700143041365,
+      "end": 1700143041365,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1700143041365,
+      "end": 1700143041365,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1700143041365,
+      "end": 1700143041365,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1700143041365,
+      "end": 1700143041365,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1700143041366,
+      "end": 1700143041366,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1700143041366,
+      "end": 1700143041366,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1700143041366,
+      "end": 1700143041366,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1700143041366,
+      "end": 1700143041366,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1700143041366,
+      "end": 1700143041366,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1700143041366,
+      "end": 1700143041366,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1700143041366,
+      "end": 1700143041366,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1700143041366,
+      "end": 1700143041366,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1700143041366,
+      "end": 1700143041366,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1700143041366,
+      "end": 1700143041366,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1700143041366,
+      "end": 1700143041366,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1700143041366,
+      "end": 1700143041366,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1700143041366,
+      "end": 1700143041366,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1700143041366,
+      "end": 1700143041366,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1700143041366,
+      "end": 1700143041366,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1700143041366,
+      "end": 1700143041366,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1700143041366,
+      "end": 1700143041366,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1700143041366,
+      "end": 1700143041366,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1700143041367,
+      "end": 1700143041367,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1700143041367,
+      "end": 1700143041367,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1700143041367,
+      "end": 1700143041367,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1700143041367,
+      "end": 1700143041367,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1700143041367,
+      "end": 1700143041367,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1700143041367,
+      "end": 1700143041367,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1700143041367,
+      "end": 1700143041367,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1700143041367,
+      "end": 1700143041367,
+      "order": "normal"
+    }
+  ]
+}

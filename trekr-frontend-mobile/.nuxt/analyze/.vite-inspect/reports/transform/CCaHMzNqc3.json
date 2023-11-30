@@ -1,0 +1,210 @@
+{
+  "resolvedId": "C:/Users/Admin/Documents/Projects/Tinashe/trekr/trekr-frontend/node_modules/@ionic/core/components/ion-select-option.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "/*!\n * (C) Ionic http://ionicframework.com - MIT License\n */\nimport { proxyCustomElement, HTMLElement, h, Host } from '@stencil/core/internal/client';\nimport { b as getIonMode } from './ionic-global.js';\n\nconst selectOptionCss = \":host{display:none}\";\n\nconst SelectOption = /*@__PURE__*/ proxyCustomElement(class SelectOption extends HTMLElement {\n  constructor() {\n    super();\n    this.__registerHost();\n    this.__attachShadow();\n    this.inputId = `ion-selopt-${selectOptionIds++}`;\n    this.disabled = false;\n    this.value = undefined;\n  }\n  render() {\n    return h(Host, { role: \"option\", id: this.inputId, class: getIonMode(this) });\n  }\n  get el() { return this; }\n  static get style() { return selectOptionCss; }\n}, [1, \"ion-select-option\", {\n    \"disabled\": [4],\n    \"value\": [8]\n  }]);\nlet selectOptionIds = 0;\nfunction defineCustomElement$1() {\n  if (typeof customElements === \"undefined\") {\n    return;\n  }\n  const components = [\"ion-select-option\"];\n  components.forEach(tagName => { switch (tagName) {\n    case \"ion-select-option\":\n      if (!customElements.get(tagName)) {\n        customElements.define(tagName, SelectOption);\n      }\n      break;\n  } });\n}\n\nconst IonSelectOption = SelectOption;\nconst defineCustomElement = defineCustomElement$1;\n\nexport { IonSelectOption, defineCustomElement };\n",
+      "start": 1700143041344,
+      "end": 1700143041500,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1700143041500,
+      "end": 1700143041500,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1700143041500,
+      "end": 1700143041500,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1700143041500,
+      "end": 1700143041500,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1700143041500,
+      "end": 1700143041500,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1700143041500,
+      "end": 1700143041500,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1700143041500,
+      "end": 1700143041500,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1700143041500,
+      "end": 1700143041500,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1700143041500,
+      "end": 1700143041500,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1700143041500,
+      "end": 1700143041500,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1700143041500,
+      "end": 1700143041500,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1700143041500,
+      "end": 1700143041500,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1700143041500,
+      "end": 1700143041500,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1700143041500,
+      "end": 1700143041500,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1700143041500,
+      "end": 1700143041500,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1700143041500,
+      "end": 1700143041500,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1700143041500,
+      "end": 1700143041500,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1700143041500,
+      "end": 1700143041500,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1700143041500,
+      "end": 1700143041500,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1700143041500,
+      "end": 1700143041500,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1700143041500,
+      "end": 1700143041500,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1700143041500,
+      "end": 1700143041501,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1700143041501,
+      "end": 1700143041501,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1700143041501,
+      "end": 1700143041501,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1700143041501,
+      "end": 1700143041501,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1700143041501,
+      "end": 1700143041501,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1700143041501,
+      "end": 1700143041501,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1700143041501,
+      "end": 1700143041501,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1700143041501,
+      "end": 1700143041501,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1700143041501,
+      "end": 1700143041501,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1700143041501,
+      "end": 1700143041501,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1700143041501,
+      "end": 1700143041501,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1700143041501,
+      "end": 1700143041501,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1700143041501,
+      "end": 1700143041501,
+      "order": "normal"
+    }
+  ]
+}

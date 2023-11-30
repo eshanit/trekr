@@ -1,0 +1,210 @@
+{
+  "resolvedId": "C:/Users/Admin/Documents/Projects/Tinashe/trekr/trekr-frontend/node_modules/@ionic/core/components/ion-thumbnail.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "/*!\n * (C) Ionic http://ionicframework.com - MIT License\n */\nimport { proxyCustomElement, HTMLElement, h, Host } from '@stencil/core/internal/client';\nimport { b as getIonMode } from './ionic-global.js';\n\nconst thumbnailCss = \":host{--size:48px;--border-radius:0;border-radius:var(--border-radius);display:block;width:var(--size);height:var(--size)}::slotted(ion-img),::slotted(img){border-radius:var(--border-radius);width:100%;height:100%;-o-object-fit:cover;object-fit:cover;overflow:hidden}\";\n\nconst Thumbnail = /*@__PURE__*/ proxyCustomElement(class Thumbnail extends HTMLElement {\n  constructor() {\n    super();\n    this.__registerHost();\n    this.__attachShadow();\n  }\n  render() {\n    return (h(Host, { class: getIonMode(this) }, h(\"slot\", null)));\n  }\n  static get style() { return thumbnailCss; }\n}, [1, \"ion-thumbnail\"]);\nfunction defineCustomElement$1() {\n  if (typeof customElements === \"undefined\") {\n    return;\n  }\n  const components = [\"ion-thumbnail\"];\n  components.forEach(tagName => { switch (tagName) {\n    case \"ion-thumbnail\":\n      if (!customElements.get(tagName)) {\n        customElements.define(tagName, Thumbnail);\n      }\n      break;\n  } });\n}\n\nconst IonThumbnail = Thumbnail;\nconst defineCustomElement = defineCustomElement$1;\n\nexport { IonThumbnail, defineCustomElement };\n",
+      "start": 1700143041398,
+      "end": 1700143041577,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1700143041577,
+      "end": 1700143041577,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1700143041577,
+      "end": 1700143041577,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1700143041577,
+      "end": 1700143041577,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1700143041577,
+      "end": 1700143041577,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1700143041577,
+      "end": 1700143041577,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1700143041577,
+      "end": 1700143041577,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1700143041577,
+      "end": 1700143041577,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1700143041577,
+      "end": 1700143041577,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1700143041577,
+      "end": 1700143041577,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1700143041577,
+      "end": 1700143041577,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1700143041577,
+      "end": 1700143041577,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1700143041577,
+      "end": 1700143041577,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1700143041577,
+      "end": 1700143041577,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1700143041577,
+      "end": 1700143041577,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1700143041577,
+      "end": 1700143041577,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1700143041577,
+      "end": 1700143041577,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1700143041577,
+      "end": 1700143041577,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1700143041577,
+      "end": 1700143041577,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1700143041577,
+      "end": 1700143041577,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1700143041577,
+      "end": 1700143041577,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1700143041577,
+      "end": 1700143041578,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1700143041578,
+      "end": 1700143041578,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1700143041578,
+      "end": 1700143041578,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1700143041578,
+      "end": 1700143041578,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1700143041578,
+      "end": 1700143041578,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1700143041578,
+      "end": 1700143041578,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1700143041578,
+      "end": 1700143041578,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1700143041578,
+      "end": 1700143041578,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1700143041578,
+      "end": 1700143041578,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1700143041578,
+      "end": 1700143041578,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1700143041578,
+      "end": 1700143041578,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1700143041578,
+      "end": 1700143041578,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1700143041578,
+      "end": 1700143041578,
+      "order": "normal"
+    }
+  ]
+}

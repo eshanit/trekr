@@ -1,0 +1,8 @@
+{
+  "appId": "nuxt.app",
+  "appName": "trekr",
+  "webDir": ".output/public",
+  "server": {
+    "androidScheme": "https"
+  }
+}

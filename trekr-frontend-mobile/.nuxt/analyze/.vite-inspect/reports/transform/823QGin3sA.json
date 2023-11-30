@@ -1,0 +1,210 @@
+{
+  "resolvedId": "C:/Users/Admin/Documents/Projects/Tinashe/trekr/trekr-frontend/node_modules/@ionic/core/components/lock-controller.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "/*!\n * (C) Ionic http://ionicframework.com - MIT License\n */\n/**\n * Creates a lock controller.\n *\n * Claiming a lock means that nothing else can acquire the lock until it is released.\n * This can momentarily prevent execution of code that needs to wait for the earlier code to finish.\n * For example, this can be used to prevent multiple transitions from occurring at the same time.\n */\nconst createLockController = () => {\n  let waitPromise;\n  /**\n   * When lock() is called, the lock is claimed.\n   * Once a lock has been claimed, it cannot be claimed again until it is released.\n   * When this function gets resolved, the lock is released, allowing it to be claimed again.\n   *\n   * @example ```tsx\n   * const unlock = await this.lockController.lock();\n   * // do other stuff\n   * unlock();\n   * ```\n   */\n  const lock = async () => {\n    const p = waitPromise;\n    let resolve;\n    waitPromise = new Promise((r) => (resolve = r));\n    if (p !== undefined) {\n      await p;\n    }\n    return resolve;\n  };\n  return {\n    lock,\n  };\n};\n\nexport { createLockController as c };\n",
+      "start": 1700143042347,
+      "end": 1700143042514,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1700143042514,
+      "end": 1700143042514,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1700143042514,
+      "end": 1700143042514,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1700143042514,
+      "end": 1700143042514,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1700143042514,
+      "end": 1700143042514,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1700143042514,
+      "end": 1700143042514,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1700143042514,
+      "end": 1700143042514,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1700143042514,
+      "end": 1700143042514,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1700143042514,
+      "end": 1700143042514,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1700143042514,
+      "end": 1700143042514,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1700143042514,
+      "end": 1700143042514,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1700143042514,
+      "end": 1700143042514,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1700143042514,
+      "end": 1700143042514,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1700143042514,
+      "end": 1700143042514,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1700143042514,
+      "end": 1700143042514,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1700143042514,
+      "end": 1700143042514,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1700143042514,
+      "end": 1700143042514,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1700143042514,
+      "end": 1700143042514,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1700143042514,
+      "end": 1700143042514,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1700143042514,
+      "end": 1700143042514,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1700143042514,
+      "end": 1700143042514,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1700143042514,
+      "end": 1700143042514,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1700143042514,
+      "end": 1700143042514,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1700143042514,
+      "end": 1700143042514,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1700143042514,
+      "end": 1700143042514,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1700143042514,
+      "end": 1700143042514,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1700143042515,
+      "end": 1700143042515,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1700143042515,
+      "end": 1700143042515,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1700143042515,
+      "end": 1700143042515,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1700143042515,
+      "end": 1700143042515,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1700143042515,
+      "end": 1700143042515,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1700143042515,
+      "end": 1700143042515,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1700143042515,
+      "end": 1700143042515,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1700143042515,
+      "end": 1700143042515,
+      "order": "normal"
+    }
+  ]
+}

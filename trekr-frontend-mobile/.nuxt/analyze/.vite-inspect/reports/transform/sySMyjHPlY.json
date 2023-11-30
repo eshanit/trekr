@@ -1,0 +1,210 @@
+{
+  "resolvedId": "C:/Users/Admin/Documents/Projects/Tinashe/trekr/trekr-frontend/node_modules/@ionic/core/components/button-active.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "/*!\n * (C) Ionic http://ionicframework.com - MIT License\n */\nimport { writeTask } from '@stencil/core/internal/client';\nimport { h as hapticSelectionEnd, a as hapticSelectionStart, b as hapticSelectionChanged } from './haptic.js';\nimport { createGesture } from './index3.js';\n\nconst createButtonActiveGesture = (el, isButton) => {\n  let currentTouchedButton;\n  let initialTouchedButton;\n  const activateButtonAtPoint = (x, y, hapticFeedbackFn) => {\n    if (typeof document === 'undefined') {\n      return;\n    }\n    const target = document.elementFromPoint(x, y);\n    if (!target || !isButton(target)) {\n      clearActiveButton();\n      return;\n    }\n    if (target !== currentTouchedButton) {\n      clearActiveButton();\n      setActiveButton(target, hapticFeedbackFn);\n    }\n  };\n  const setActiveButton = (button, hapticFeedbackFn) => {\n    currentTouchedButton = button;\n    if (!initialTouchedButton) {\n      initialTouchedButton = currentTouchedButton;\n    }\n    const buttonToModify = currentTouchedButton;\n    writeTask(() => buttonToModify.classList.add('ion-activated'));\n    hapticFeedbackFn();\n  };\n  const clearActiveButton = (dispatchClick = false) => {\n    if (!currentTouchedButton) {\n      return;\n    }\n    const buttonToModify = currentTouchedButton;\n    writeTask(() => buttonToModify.classList.remove('ion-activated'));\n    /**\n     * Clicking on one button, but releasing on another button\n     * does not dispatch a click event in browsers, so we\n     * need to do it manually here. Some browsers will\n     * dispatch a click if clicking on one button, dragging over\n     * another button, and releasing on the original button. In that\n     * case, we need to make sure we do not cause a double click there.\n     */\n    if (dispatchClick && initialTouchedButton !== currentTouchedButton) {\n      currentTouchedButton.click();\n    }\n    currentTouchedButton = undefined;\n  };\n  return createGesture({\n    el,\n    gestureName: 'buttonActiveDrag',\n    threshold: 0,\n    onStart: (ev) => activateButtonAtPoint(ev.currentX, ev.currentY, hapticSelectionStart),\n    onMove: (ev) => activateButtonAtPoint(ev.currentX, ev.currentY, hapticSelectionChanged),\n    onEnd: () => {\n      clearActiveButton(true);\n      hapticSelectionEnd();\n      initialTouchedButton = undefined;\n    },\n  });\n};\n\nexport { createButtonActiveGesture as c };\n",
+      "start": 1700143042527,
+      "end": 1700143042624,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1700143042624,
+      "end": 1700143042624,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1700143042624,
+      "end": 1700143042624,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1700143042624,
+      "end": 1700143042624,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1700143042624,
+      "end": 1700143042624,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1700143042624,
+      "end": 1700143042624,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1700143042624,
+      "end": 1700143042624,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1700143042624,
+      "end": 1700143042624,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1700143042624,
+      "end": 1700143042624,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1700143042624,
+      "end": 1700143042624,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1700143042624,
+      "end": 1700143042624,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1700143042624,
+      "end": 1700143042624,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1700143042624,
+      "end": 1700143042624,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1700143042624,
+      "end": 1700143042624,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1700143042624,
+      "end": 1700143042624,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1700143042624,
+      "end": 1700143042624,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1700143042624,
+      "end": 1700143042624,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1700143042624,
+      "end": 1700143042624,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1700143042624,
+      "end": 1700143042624,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1700143042624,
+      "end": 1700143042624,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1700143042624,
+      "end": 1700143042624,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1700143042624,
+      "end": 1700143042625,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1700143042625,
+      "end": 1700143042625,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1700143042625,
+      "end": 1700143042625,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1700143042625,
+      "end": 1700143042625,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1700143042625,
+      "end": 1700143042625,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1700143042625,
+      "end": 1700143042625,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1700143042625,
+      "end": 1700143042625,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1700143042625,
+      "end": 1700143042625,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1700143042625,
+      "end": 1700143042625,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1700143042625,
+      "end": 1700143042625,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1700143042625,
+      "end": 1700143042625,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1700143042625,
+      "end": 1700143042625,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1700143042625,
+      "end": 1700143042625,
+      "order": "normal"
+    }
+  ]
+}

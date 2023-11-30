@@ -1,0 +1,210 @@
+{
+  "resolvedId": "C:/Users/Admin/Documents/Projects/Tinashe/trekr/trekr-frontend/node_modules/@ionic/core/components/note.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "/*!\n * (C) Ionic http://ionicframework.com - MIT License\n */\nimport { proxyCustomElement, HTMLElement, h, Host } from '@stencil/core/internal/client';\nimport { c as createColorClasses } from './theme.js';\nimport { b as getIonMode } from './ionic-global.js';\n\nconst noteIosCss = \":host{color:var(--color);font-family:var(--ion-font-family, inherit);-webkit-box-sizing:border-box;box-sizing:border-box}:host(.ion-color){color:var(--ion-color-base)}:host{--color:var(--ion-color-step-350, #a6a6a6);font-size:max(14px, 1rem)}\";\n\nconst noteMdCss = \":host{color:var(--color);font-family:var(--ion-font-family, inherit);-webkit-box-sizing:border-box;box-sizing:border-box}:host(.ion-color){color:var(--ion-color-base)}:host{--color:var(--ion-color-step-600, #666666);font-size:0.875rem}\";\n\nconst Note = /*@__PURE__*/ proxyCustomElement(class Note extends HTMLElement {\n  constructor() {\n    super();\n    this.__registerHost();\n    this.__attachShadow();\n    this.color = undefined;\n  }\n  render() {\n    const mode = getIonMode(this);\n    return (h(Host, { class: createColorClasses(this.color, {\n        [mode]: true,\n      }) }, h(\"slot\", null)));\n  }\n  static get style() { return {\n    ios: noteIosCss,\n    md: noteMdCss\n  }; }\n}, [33, \"ion-note\", {\n    \"color\": [513]\n  }]);\nfunction defineCustomElement() {\n  if (typeof customElements === \"undefined\") {\n    return;\n  }\n  const components = [\"ion-note\"];\n  components.forEach(tagName => { switch (tagName) {\n    case \"ion-note\":\n      if (!customElements.get(tagName)) {\n        customElements.define(tagName, Note);\n      }\n      break;\n  } });\n}\n\nexport { Note as N, defineCustomElement as d };\n",
+      "start": 1700143042065,
+      "end": 1700143042258,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1700143042259,
+      "end": 1700143042259,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1700143042259,
+      "end": 1700143042259,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1700143042259,
+      "end": 1700143042259,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1700143042259,
+      "end": 1700143042259,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1700143042259,
+      "end": 1700143042259,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1700143042259,
+      "end": 1700143042259,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1700143042259,
+      "end": 1700143042259,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1700143042259,
+      "end": 1700143042259,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1700143042259,
+      "end": 1700143042259,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1700143042259,
+      "end": 1700143042259,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1700143042259,
+      "end": 1700143042259,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1700143042259,
+      "end": 1700143042259,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1700143042259,
+      "end": 1700143042259,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1700143042259,
+      "end": 1700143042259,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1700143042259,
+      "end": 1700143042259,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1700143042259,
+      "end": 1700143042259,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1700143042259,
+      "end": 1700143042259,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1700143042259,
+      "end": 1700143042259,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1700143042259,
+      "end": 1700143042259,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1700143042259,
+      "end": 1700143042259,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1700143042259,
+      "end": 1700143042260,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1700143042260,
+      "end": 1700143042260,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1700143042260,
+      "end": 1700143042260,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1700143042260,
+      "end": 1700143042260,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1700143042260,
+      "end": 1700143042260,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1700143042260,
+      "end": 1700143042260,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1700143042260,
+      "end": 1700143042260,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1700143042260,
+      "end": 1700143042260,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1700143042260,
+      "end": 1700143042260,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1700143042260,
+      "end": 1700143042260,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1700143042260,
+      "end": 1700143042260,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1700143042260,
+      "end": 1700143042260,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1700143042260,
+      "end": 1700143042260,
+      "order": "normal"
+    }
+  ]
+}

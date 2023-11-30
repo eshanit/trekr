@@ -1,0 +1,218 @@
+{
+  "resolvedId": "c:/Users/Admin/Documents/Projects/Tinashe/trekr/trekr-frontend/node_modules/@ionic/core/css/typography.css",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "/**\n * Convert a font size to a dynamic font size.\n * Fonts that participate in Dynamic Type should use\n * dynamic font sizes.\n * @param size - The initial font size including the unit (i.e. px or pt)\n * @param unit (optional) - The unit to convert to. Use this if you want to\n * convert to a unit other than $baselineUnit.\n */\n/**\n * Convert a font size to a dynamic font size but impose\n * a maximum font size.\n * @param size - The initial font size including the unit (i.e. px or pt)\n * @param maxScale - The maximum scale of the font (i.e. 2.5 for a maximum 250% scale).\n * @param unit (optional) - The unit to convert the initial font size to. Use this if you want to\n * convert to a unit other than $baselineUnit.\n */\n/**\n * Convert a font size to a dynamic font size but impose\n * a minimum font size.\n * @param size - The initial font size including the unit (i.e. px or pt)\n * @param minScale - The minimum scale of the font (i.e. 0.8 for a minimum 80% scale).\n * @param unit (optional) - The unit to convert the initial font size to. Use this if you want to\n * convert to a unit other than $baselineUnit.\n */\n/**\n * Convert a font size to a dynamic font size but impose\n * maximum and minimum font sizes.\n * @param size - The initial font size including the unit (i.e. px or pt)\n * @param minScale - The minimum scale of the font (i.e. 0.8 for a minimum 80% scale).\n * @param maxScale - The maximum scale of the font (i.e. 2.5 for a maximum 250% scale).\n * @param unit (optional) - The unit to convert the initial font size to. Use this if you want to\n * convert to a unit other than $baselineUnit.\n */\nhtml {\n  font-family: var(--ion-font-family);\n}\n\n/**\n * Dynamic Type is an iOS-only feature, so\n * this should only be enabled on iOS devices.\n */\n@supports (-webkit-touch-callout: none) {\n  html {\n    /**\n     * Includes fallback if Dynamic Type is not enabled.\n     */\n    font: var(--ion-dynamic-font, 16px var(--ion-font-family));\n  }\n}\na {\n  background-color: transparent;\n  color: var(--ion-color-primary, #3880ff);\n}\n\nh1,\nh2,\nh3,\nh4,\nh5,\nh6 {\n  margin-top: 16px;\n  margin-bottom: 10px;\n  font-weight: 500;\n  line-height: 1.2;\n}\n\nh1 {\n  margin-top: 20px;\n  font-size: 1.625rem;\n}\n\nh2 {\n  margin-top: 18px;\n  font-size: 1.5rem;\n}\n\nh3 {\n  font-size: 1.375rem;\n}\n\nh4 {\n  font-size: 1.25rem;\n}\n\nh5 {\n  font-size: 1.125rem;\n}\n\nh6 {\n  font-size: 1rem;\n}\n\nsmall {\n  font-size: 75%;\n}\n\nsub,\nsup {\n  position: relative;\n  font-size: 75%;\n  line-height: 0;\n  vertical-align: baseline;\n}\n\nsup {\n  top: -0.5em;\n}\n\nsub {\n  bottom: -0.25em;\n}\n\n/*# sourceMappingURL=typography.css.map */\n",
+      "start": 1700143034560,
+      "end": 1700143034876,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1700143034876,
+      "end": 1700143034876,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1700143034876,
+      "end": 1700143034876,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1700143034876,
+      "end": 1700143034876,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "result": "html{font-family:var(--ion-font-family)}@supports (-webkit-touch-callout:none){html{font:var(--ion-dynamic-font,16px var(--ion-font-family))}}a{background-color:transparent;color:#3880ff;color:var(--ion-color-primary,#3880ff)}h1,h2,h3,h4,h5,h6{font-weight:500;line-height:1.2;margin-bottom:10px;margin-top:16px}h1{font-size:1.625rem;margin-top:20px}h2{font-size:1.5rem;margin-top:18px}h3{font-size:1.375rem}h4{font-size:1.25rem}h5{font-size:1.125rem}h6{font-size:1rem}small,sub,sup{font-size:75%}sub,sup{line-height:0;position:relative;vertical-align:baseline}sup{top:-.5em}sub{bottom:-.25em}\n/*# sourceMappingURL=typography.css.map */",
+      "start": 1700143034876,
+      "end": 1700143037781,
+      "order": "normal",
+      "sourcemaps": {
+        "mappings": ""
+      }
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1700143037782,
+      "end": 1700143037782,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1700143037782,
+      "end": 1700143037782,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1700143037782,
+      "end": 1700143037782,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1700143037782,
+      "end": 1700143037782,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1700143037782,
+      "end": 1700143037782,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1700143037782,
+      "end": 1700143037782,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1700143037782,
+      "end": 1700143037782,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1700143037783,
+      "end": 1700143037783,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1700143037783,
+      "end": 1700143037783,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1700143037783,
+      "end": 1700143037783,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1700143037784,
+      "end": 1700143037784,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1700143037784,
+      "end": 1700143037784,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "result": "export default ''",
+      "start": 1700143037784,
+      "end": 1700143037784,
+      "order": "normal",
+      "sourcemaps": {
+        "mappings": ""
+      }
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1700143037784,
+      "end": 1700143037784,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1700143037784,
+      "end": 1700143037784,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1700143037784,
+      "end": 1700143037784,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1700143037785,
+      "end": 1700143037785,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1700143037785,
+      "end": 1700143037785,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1700143037785,
+      "end": 1700143037785,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1700143037785,
+      "end": 1700143037785,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1700143037785,
+      "end": 1700143037785,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1700143037785,
+      "end": 1700143037785,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1700143037785,
+      "end": 1700143037786,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1700143037786,
+      "end": 1700143037786,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1700143037786,
+      "end": 1700143037786,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1700143037786,
+      "end": 1700143037786,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1700143037786,
+      "end": 1700143037786,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1700143037786,
+      "end": 1700143037786,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1700143037786,
+      "end": 1700143037786,
+      "order": "normal"
+    }
+  ]
+}

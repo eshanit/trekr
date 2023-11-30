@@ -1,0 +1,218 @@
+{
+  "resolvedId": "c:/Users/Admin/Documents/Projects/Tinashe/trekr/trekr-frontend/node_modules/@ionic/core/css/structure.css",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "/**\n * Convert a font size to a dynamic font size.\n * Fonts that participate in Dynamic Type should use\n * dynamic font sizes.\n * @param size - The initial font size including the unit (i.e. px or pt)\n * @param unit (optional) - The unit to convert to. Use this if you want to\n * convert to a unit other than $baselineUnit.\n */\n/**\n * Convert a font size to a dynamic font size but impose\n * a maximum font size.\n * @param size - The initial font size including the unit (i.e. px or pt)\n * @param maxScale - The maximum scale of the font (i.e. 2.5 for a maximum 250% scale).\n * @param unit (optional) - The unit to convert the initial font size to. Use this if you want to\n * convert to a unit other than $baselineUnit.\n */\n/**\n * Convert a font size to a dynamic font size but impose\n * a minimum font size.\n * @param size - The initial font size including the unit (i.e. px or pt)\n * @param minScale - The minimum scale of the font (i.e. 0.8 for a minimum 80% scale).\n * @param unit (optional) - The unit to convert the initial font size to. Use this if you want to\n * convert to a unit other than $baselineUnit.\n */\n/**\n * Convert a font size to a dynamic font size but impose\n * maximum and minimum font sizes.\n * @param size - The initial font size including the unit (i.e. px or pt)\n * @param minScale - The minimum scale of the font (i.e. 0.8 for a minimum 80% scale).\n * @param maxScale - The maximum scale of the font (i.e. 2.5 for a maximum 250% scale).\n * @param unit (optional) - The unit to convert the initial font size to. Use this if you want to\n * convert to a unit other than $baselineUnit.\n */\n* {\n  box-sizing: border-box;\n  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);\n  -webkit-tap-highlight-color: transparent;\n  -webkit-touch-callout: none;\n}\n\nhtml {\n  width: 100%;\n  height: 100%;\n  -webkit-text-size-adjust: 100%;\n  text-size-adjust: 100%;\n}\n\nhtml:not(.hydrated) body {\n  display: none;\n}\n\nhtml.ion-ce body {\n  display: block;\n}\n\nhtml.plt-pwa {\n  height: 100vh;\n}\n\nbody {\n  -moz-osx-font-smoothing: grayscale;\n  -webkit-font-smoothing: antialiased;\n  margin-left: 0;\n  margin-right: 0;\n  margin-top: 0;\n  margin-bottom: 0;\n  padding-left: 0;\n  padding-right: 0;\n  padding-top: 0;\n  padding-bottom: 0;\n  position: fixed;\n  width: 100%;\n  max-width: 100%;\n  height: 100%;\n  max-height: 100%;\n  /**\n   * Because body has position: fixed,\n   * it should be promoted to its own\n   * layer.\n   *\n   * WebKit does not always promote\n   * the body to its own layer on page\n   * load in Ionic apps. Once scrolling on\n   * ion-content starts, WebKit will promote\n   * body. Unfortunately, this causes a re-paint\n   * which results in scrolling being halted\n   * until the next user gesture.\n   *\n   * This impacts the Custom Elements build.\n   * The lazy loaded build causes the browser to\n   * re-paint during hydration which causes WebKit\n   * to promote body to its own layer.\n   * In the CE Build, this hydration does not\n   * happen, so the additional re-paint does not occur.\n   */\n  transform: translateZ(0);\n  text-rendering: optimizeLegibility;\n  overflow: hidden;\n  touch-action: manipulation;\n  -webkit-user-drag: none;\n  -ms-content-zooming: none;\n  word-wrap: break-word;\n  overscroll-behavior-y: none;\n  -webkit-text-size-adjust: none;\n  text-size-adjust: none;\n}\n\n/*# sourceMappingURL=structure.css.map */\n",
+      "start": 1700143034560,
+      "end": 1700143034846,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1700143034846,
+      "end": 1700143034846,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1700143034849,
+      "end": 1700143034849,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1700143034849,
+      "end": 1700143034849,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "result": "*{-webkit-tap-highlight-color:rgba(0,0,0,0);-webkit-tap-highlight-color:transparent;-webkit-touch-callout:none;box-sizing:border-box}html{-webkit-text-size-adjust:100%;-moz-text-size-adjust:100%;text-size-adjust:100%;height:100%;width:100%}html:not(.hydrated) body{display:none}html.ion-ce body{display:block}html.plt-pwa{height:100vh}body{-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;-webkit-user-drag:none;-ms-content-zooming:none;word-wrap:break-word;-webkit-text-size-adjust:none;-moz-text-size-adjust:none;text-size-adjust:none;height:100%;margin:0;max-height:100%;max-width:100%;overflow:hidden;overscroll-behavior-y:none;padding:0;position:fixed;text-rendering:optimizeLegibility;touch-action:manipulation;transform:translateZ(0);width:100%}\n/*# sourceMappingURL=structure.css.map */",
+      "start": 1700143034849,
+      "end": 1700143037781,
+      "order": "normal",
+      "sourcemaps": {
+        "mappings": ""
+      }
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1700143037782,
+      "end": 1700143037782,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1700143037782,
+      "end": 1700143037782,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1700143037782,
+      "end": 1700143037782,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1700143037782,
+      "end": 1700143037782,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1700143037782,
+      "end": 1700143037782,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1700143037782,
+      "end": 1700143037782,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1700143037782,
+      "end": 1700143037782,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1700143037783,
+      "end": 1700143037783,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1700143037783,
+      "end": 1700143037783,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1700143037783,
+      "end": 1700143037783,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1700143037784,
+      "end": 1700143037784,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1700143037784,
+      "end": 1700143037784,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "result": "export default ''",
+      "start": 1700143037784,
+      "end": 1700143037784,
+      "order": "normal",
+      "sourcemaps": {
+        "mappings": ""
+      }
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1700143037784,
+      "end": 1700143037784,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1700143037784,
+      "end": 1700143037784,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1700143037784,
+      "end": 1700143037784,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1700143037785,
+      "end": 1700143037785,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1700143037785,
+      "end": 1700143037785,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1700143037785,
+      "end": 1700143037785,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1700143037785,
+      "end": 1700143037785,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1700143037785,
+      "end": 1700143037785,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1700143037785,
+      "end": 1700143037785,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1700143037785,
+      "end": 1700143037786,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1700143037786,
+      "end": 1700143037786,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1700143037786,
+      "end": 1700143037786,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1700143037786,
+      "end": 1700143037786,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1700143037786,
+      "end": 1700143037786,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1700143037786,
+      "end": 1700143037786,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1700143037786,
+      "end": 1700143037786,
+      "order": "normal"
+    }
+  ]
+}

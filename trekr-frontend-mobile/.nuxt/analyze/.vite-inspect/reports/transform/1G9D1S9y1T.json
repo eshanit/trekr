@@ -1,0 +1,210 @@
+{
+  "resolvedId": "C:/Users/Admin/Documents/Projects/Tinashe/trekr/trekr-frontend/node_modules/@ionic/core/components/haptic.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "/*!\n * (C) Ionic http://ionicframework.com - MIT License\n */\nimport { g as getCapacitor } from './capacitor.js';\n\nvar ImpactStyle;\n(function (ImpactStyle) {\n  /**\n   * A collision between large, heavy user interface elements\n   *\n   * @since 1.0.0\n   */\n  ImpactStyle[\"Heavy\"] = \"HEAVY\";\n  /**\n   * A collision between moderately sized user interface elements\n   *\n   * @since 1.0.0\n   */\n  ImpactStyle[\"Medium\"] = \"MEDIUM\";\n  /**\n   * A collision between small, light user interface elements\n   *\n   * @since 1.0.0\n   */\n  ImpactStyle[\"Light\"] = \"LIGHT\";\n})(ImpactStyle || (ImpactStyle = {}));\nvar NotificationType;\n(function (NotificationType) {\n  /**\n   * A notification feedback type indicating that a task has completed successfully\n   *\n   * @since 1.0.0\n   */\n  NotificationType[\"Success\"] = \"SUCCESS\";\n  /**\n   * A notification feedback type indicating that a task has produced a warning\n   *\n   * @since 1.0.0\n   */\n  NotificationType[\"Warning\"] = \"WARNING\";\n  /**\n   * A notification feedback type indicating that a task has failed\n   *\n   * @since 1.0.0\n   */\n  NotificationType[\"Error\"] = \"ERROR\";\n})(NotificationType || (NotificationType = {}));\nconst HapticEngine = {\n  getEngine() {\n    const tapticEngine = window.TapticEngine;\n    if (tapticEngine) {\n      // Cordova\n      // TODO FW-4707 - Remove this in Ionic 8\n      return tapticEngine;\n    }\n    const capacitor = getCapacitor();\n    if (capacitor === null || capacitor === void 0 ? void 0 : capacitor.isPluginAvailable('Haptics')) {\n      // Capacitor\n      return capacitor.Plugins.Haptics;\n    }\n    return undefined;\n  },\n  available() {\n    const engine = this.getEngine();\n    if (!engine) {\n      return false;\n    }\n    const capacitor = getCapacitor();\n    /**\n     * Developers can manually import the\n     * Haptics plugin in their app which will cause\n     * getEngine to return the Haptics engine. However,\n     * the Haptics engine will throw an error if\n     * used in a web browser that does not support\n     * the Vibrate API. This check avoids that error\n     * if the browser does not support the Vibrate API.\n     */\n    if ((capacitor === null || capacitor === void 0 ? void 0 : capacitor.getPlatform()) === 'web') {\n      // eslint-disable-next-line @typescript-eslint/prefer-optional-chain\n      return typeof navigator !== 'undefined' && navigator.vibrate !== undefined;\n    }\n    return true;\n  },\n  isCordova() {\n    return window.TapticEngine !== undefined;\n  },\n  isCapacitor() {\n    return getCapacitor() !== undefined;\n  },\n  impact(options) {\n    const engine = this.getEngine();\n    if (!engine) {\n      return;\n    }\n    /**\n     * To provide backwards compatibility with Cordova apps,\n     * we convert the style to lowercase.\n     *\n     * TODO: FW-4707 - Remove this in Ionic 8\n     */\n    const style = this.isCapacitor() ? options.style : options.style.toLowerCase();\n    engine.impact({ style });\n  },\n  notification(options) {\n    const engine = this.getEngine();\n    if (!engine) {\n      return;\n    }\n    /**\n     * To provide backwards compatibility with Cordova apps,\n     * we convert the style to lowercase.\n     *\n     * TODO: FW-4707 - Remove this in Ionic 8\n     */\n    const type = this.isCapacitor() ? options.type : options.type.toLowerCase();\n    engine.notification({ type });\n  },\n  selection() {\n    /**\n     * To provide backwards compatibility with Cordova apps,\n     * we convert the style to lowercase.\n     *\n     * TODO: FW-4707 - Remove this in Ionic 8\n     */\n    const style = this.isCapacitor() ? ImpactStyle.Light : 'light';\n    this.impact({ style });\n  },\n  selectionStart() {\n    const engine = this.getEngine();\n    if (!engine) {\n      return;\n    }\n    if (this.isCapacitor()) {\n      engine.selectionStart();\n    }\n    else {\n      engine.gestureSelectionStart();\n    }\n  },\n  selectionChanged() {\n    const engine = this.getEngine();\n    if (!engine) {\n      return;\n    }\n    if (this.isCapacitor()) {\n      engine.selectionChanged();\n    }\n    else {\n      engine.gestureSelectionChanged();\n    }\n  },\n  selectionEnd() {\n    const engine = this.getEngine();\n    if (!engine) {\n      return;\n    }\n    if (this.isCapacitor()) {\n      engine.selectionEnd();\n    }\n    else {\n      engine.gestureSelectionEnd();\n    }\n  },\n};\n/**\n * Check to see if the Haptic Plugin is available\n * @return Returns `true` or false if the plugin is available\n */\nconst hapticAvailable = () => {\n  return HapticEngine.available();\n};\n/**\n * Trigger a selection changed haptic event. Good for one-time events\n * (not for gestures)\n */\nconst hapticSelection = () => {\n  hapticAvailable() && HapticEngine.selection();\n};\n/**\n * Tell the haptic engine that a gesture for a selection change is starting.\n */\nconst hapticSelectionStart = () => {\n  hapticAvailable() && HapticEngine.selectionStart();\n};\n/**\n * Tell the haptic engine that a selection changed during a gesture.\n */\nconst hapticSelectionChanged = () => {\n  hapticAvailable() && HapticEngine.selectionChanged();\n};\n/**\n * Tell the haptic engine we are done with a gesture. This needs to be\n * called lest resources are not properly recycled.\n */\nconst hapticSelectionEnd = () => {\n  hapticAvailable() && HapticEngine.selectionEnd();\n};\n/**\n * Use this to indicate success/failure/warning to the user.\n * options should be of the type `{ style: ImpactStyle.LIGHT }` (or `MEDIUM`/`HEAVY`)\n */\nconst hapticImpact = (options) => {\n  hapticAvailable() && HapticEngine.impact(options);\n};\n\nexport { ImpactStyle as I, hapticSelectionStart as a, hapticSelectionChanged as b, hapticImpact as c, hapticSelection as d, hapticSelectionEnd as h };\n",
+      "start": 1700143042319,
+      "end": 1700143042446,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1700143042447,
+      "end": 1700143042447,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1700143042447,
+      "end": 1700143042447,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1700143042447,
+      "end": 1700143042447,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1700143042447,
+      "end": 1700143042447,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1700143042447,
+      "end": 1700143042447,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1700143042447,
+      "end": 1700143042447,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1700143042447,
+      "end": 1700143042447,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1700143042447,
+      "end": 1700143042447,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1700143042447,
+      "end": 1700143042447,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1700143042447,
+      "end": 1700143042447,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1700143042447,
+      "end": 1700143042447,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1700143042447,
+      "end": 1700143042447,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1700143042447,
+      "end": 1700143042447,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1700143042447,
+      "end": 1700143042447,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1700143042447,
+      "end": 1700143042447,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1700143042447,
+      "end": 1700143042447,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1700143042447,
+      "end": 1700143042447,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1700143042447,
+      "end": 1700143042447,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1700143042447,
+      "end": 1700143042447,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1700143042447,
+      "end": 1700143042447,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1700143042447,
+      "end": 1700143042448,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1700143042448,
+      "end": 1700143042448,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1700143042448,
+      "end": 1700143042448,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1700143042448,
+      "end": 1700143042448,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1700143042448,
+      "end": 1700143042448,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1700143042448,
+      "end": 1700143042448,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1700143042448,
+      "end": 1700143042448,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1700143042448,
+      "end": 1700143042448,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1700143042448,
+      "end": 1700143042448,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1700143042448,
+      "end": 1700143042448,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1700143042448,
+      "end": 1700143042448,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1700143042448,
+      "end": 1700143042448,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1700143042448,
+      "end": 1700143042448,
+      "order": "normal"
+    }
+  ]
+}

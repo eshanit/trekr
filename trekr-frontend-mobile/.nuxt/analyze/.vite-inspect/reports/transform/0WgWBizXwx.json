@@ -1,0 +1,210 @@
+{
+  "resolvedId": "C:/Users/Admin/Documents/Projects/Tinashe/trekr/trekr-frontend/node_modules/@ionic/core/components/list.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "/*!\n * (C) Ionic http://ionicframework.com - MIT License\n */\nimport { proxyCustomElement, HTMLElement, h, Host } from '@stencil/core/internal/client';\nimport { b as getIonMode } from './ionic-global.js';\n\nconst listIosCss = \"ion-list{margin-left:0;margin-right:0;margin-top:0;margin-bottom:0;padding-left:0;padding-right:0;padding-top:0;padding-bottom:0;display:block;contain:content;list-style-type:none}ion-list.list-inset{-webkit-transform:translateZ(0);transform:translateZ(0);overflow:hidden}.list-ios{background:var(--ion-item-background, var(--ion-background-color, #fff))}.list-ios.list-inset{-webkit-margin-start:16px;margin-inline-start:16px;-webkit-margin-end:16px;margin-inline-end:16px;margin-top:16px;margin-bottom:16px;border-radius:10px}.list-ios.list-inset ion-item:only-child,.list-ios.list-inset ion-item:not(:only-of-type):last-of-type,.list-ios.list-inset ion-item-sliding:last-of-type ion-item{--border-width:0;--inner-border-width:0}.list-ios.list-inset+ion-list.list-inset{margin-top:0}.list-ios-lines-none .item-lines-default{--inner-border-width:0px;--border-width:0px}.list-ios-lines-full .item-lines-default{--inner-border-width:0px;--border-width:0 0 0.55px 0}.list-ios-lines-inset .item-lines-default{--inner-border-width:0 0 0.55px 0;--border-width:0px}ion-card .list-ios{margin-left:0;margin-right:0;margin-top:0;margin-bottom:0}\";\n\nconst listMdCss = \"ion-list{margin-left:0;margin-right:0;margin-top:0;margin-bottom:0;padding-left:0;padding-right:0;padding-top:0;padding-bottom:0;display:block;contain:content;list-style-type:none}ion-list.list-inset{-webkit-transform:translateZ(0);transform:translateZ(0);overflow:hidden}.list-md{margin-left:0;margin-right:0;margin-top:0;margin-bottom:0;padding-left:0;padding-right:0;padding-top:8px;padding-bottom:8px;background:var(--ion-item-background, var(--ion-background-color, #fff))}@supports (inset-inline-start: 0){.list-md>.input:last-child::after{inset-inline-start:0}}@supports not (inset-inline-start: 0){.list-md>.input:last-child::after{left:0}:host-context([dir=rtl]) .list-md>.input:last-child::after{left:unset;right:unset;right:0}[dir=rtl] .list-md>.input:last-child::after{left:unset;right:unset;right:0}@supports selector(:dir(rtl)){.list-md>.input:last-child::after:dir(rtl){left:unset;right:unset;right:0}}}.list-md.list-inset{-webkit-margin-start:16px;margin-inline-start:16px;-webkit-margin-end:16px;margin-inline-end:16px;margin-top:16px;margin-bottom:16px;border-radius:2px}.list-md.list-inset ion-item:not(:only-of-type):first-of-type,.list-md.list-inset ion-item-sliding:first-of-type ion-item{--border-radius:2px 2px 0 0}.list-md.list-inset ion-item:not(:only-of-type):last-of-type,.list-md.list-inset ion-item-sliding:last-of-type ion-item{--border-radius:0 0 2px 2px;--border-width:0;--inner-border-width:0}.list-md.list-inset ion-item:only-child{--border-radius:2px;--border-width:0;--inner-border-width:0}.list-md.list-inset+ion-list.list-inset{margin-top:0}.list-md-lines-none .item-lines-default{--inner-border-width:0px;--border-width:0px}.list-md-lines-full .item-lines-default{--inner-border-width:0px;--border-width:0 0 1px 0}.list-md-lines-inset .item-lines-default{--inner-border-width:0 0 1px 0;--border-width:0px}ion-card .list-md{margin-left:0;margin-right:0;margin-top:0;margin-bottom:0}\";\n\nconst List = /*@__PURE__*/ proxyCustomElement(class List extends HTMLElement {\n  constructor() {\n    super();\n    this.__registerHost();\n    this.lines = undefined;\n    this.inset = false;\n  }\n  /**\n   * If `ion-item-sliding` are used inside the list, this method closes\n   * any open sliding item.\n   *\n   * Returns `true` if an actual `ion-item-sliding` is closed.\n   */\n  async closeSlidingItems() {\n    const item = this.el.querySelector('ion-item-sliding');\n    if (item === null || item === void 0 ? void 0 : item.closeOpened) {\n      return item.closeOpened();\n    }\n    return false;\n  }\n  render() {\n    const mode = getIonMode(this);\n    const { lines, inset } = this;\n    return (h(Host, { role: \"list\", class: {\n        [mode]: true,\n        // Used internally for styling\n        [`list-${mode}`]: true,\n        'list-inset': inset,\n        [`list-lines-${lines}`]: lines !== undefined,\n        [`list-${mode}-lines-${lines}`]: lines !== undefined,\n      } }));\n  }\n  get el() { return this; }\n  static get style() { return {\n    ios: listIosCss,\n    md: listMdCss\n  }; }\n}, [32, \"ion-list\", {\n    \"lines\": [1],\n    \"inset\": [4],\n    \"closeSlidingItems\": [64]\n  }]);\nfunction defineCustomElement() {\n  if (typeof customElements === \"undefined\") {\n    return;\n  }\n  const components = [\"ion-list\"];\n  components.forEach(tagName => { switch (tagName) {\n    case \"ion-list\":\n      if (!customElements.get(tagName)) {\n        customElements.define(tagName, List);\n      }\n      break;\n  } });\n}\n\nexport { List as L, defineCustomElement as d };\n",
+      "start": 1700143042198,
+      "end": 1700143042347,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1700143042347,
+      "end": 1700143042347,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1700143042347,
+      "end": 1700143042347,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1700143042347,
+      "end": 1700143042347,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1700143042347,
+      "end": 1700143042347,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1700143042347,
+      "end": 1700143042347,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1700143042347,
+      "end": 1700143042347,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1700143042347,
+      "end": 1700143042347,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1700143042347,
+      "end": 1700143042347,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1700143042347,
+      "end": 1700143042347,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1700143042347,
+      "end": 1700143042347,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1700143042347,
+      "end": 1700143042347,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1700143042347,
+      "end": 1700143042347,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1700143042347,
+      "end": 1700143042347,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1700143042348,
+      "end": 1700143042348,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1700143042348,
+      "end": 1700143042348,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1700143042348,
+      "end": 1700143042348,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1700143042348,
+      "end": 1700143042348,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1700143042348,
+      "end": 1700143042348,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1700143042348,
+      "end": 1700143042348,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1700143042348,
+      "end": 1700143042348,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1700143042348,
+      "end": 1700143042348,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1700143042348,
+      "end": 1700143042348,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1700143042348,
+      "end": 1700143042348,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1700143042348,
+      "end": 1700143042348,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1700143042348,
+      "end": 1700143042348,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1700143042348,
+      "end": 1700143042348,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1700143042348,
+      "end": 1700143042348,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1700143042349,
+      "end": 1700143042349,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1700143042349,
+      "end": 1700143042349,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1700143042349,
+      "end": 1700143042349,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1700143042349,
+      "end": 1700143042349,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1700143042349,
+      "end": 1700143042349,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1700143042349,
+      "end": 1700143042349,
+      "order": "normal"
+    }
+  ]
+}

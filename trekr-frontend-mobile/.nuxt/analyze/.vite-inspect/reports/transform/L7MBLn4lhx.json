@@ -1,0 +1,212 @@
+{
+  "resolvedId": "C:/Users/Admin/Documents/Projects/Tinashe/trekr/trekr-frontend/node_modules/@ionic/core/components/ion-router-outlet.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "/*!\n * (C) Ionic http://ionicframework.com - MIT License\n */\nimport { proxyCustomElement, HTMLElement, createEvent, h } from '@stencil/core/internal/client';\nimport { g as getTimeGivenProgression } from './cubic-bezier.js';\nimport { a as attachComponent, d as detachComponent } from './framework-delegate.js';\nimport { s as shallowEqualStringMap, l as hasLazyBuild } from './helpers.js';\nimport { c as createLockController } from './lock-controller.js';\nimport { t as transition } from './index2.js';\nimport { b as getIonMode, c as config } from './ionic-global.js';\n\nconst routerOutletCss = \":host{left:0;right:0;top:0;bottom:0;position:absolute;contain:layout size style;z-index:0}\";\n\nconst RouterOutlet = /*@__PURE__*/ proxyCustomElement(class RouterOutlet extends HTMLElement {\n  constructor() {\n    super();\n    this.__registerHost();\n    this.__attachShadow();\n    this.ionNavWillLoad = createEvent(this, \"ionNavWillLoad\", 7);\n    this.ionNavWillChange = createEvent(this, \"ionNavWillChange\", 3);\n    this.ionNavDidChange = createEvent(this, \"ionNavDidChange\", 3);\n    this.lockController = createLockController();\n    this.gestureOrAnimationInProgress = false;\n    this.mode = getIonMode(this);\n    this.delegate = undefined;\n    this.animated = true;\n    this.animation = undefined;\n    this.swipeHandler = undefined;\n  }\n  swipeHandlerChanged() {\n    if (this.gesture) {\n      this.gesture.enable(this.swipeHandler !== undefined);\n    }\n  }\n  async connectedCallback() {\n    const onStart = () => {\n      this.gestureOrAnimationInProgress = true;\n      if (this.swipeHandler) {\n        this.swipeHandler.onStart();\n      }\n    };\n    this.gesture = (await import('./swipe-back.js')).createSwipeBackGesture(this.el, () => !this.gestureOrAnimationInProgress && !!this.swipeHandler && this.swipeHandler.canStart(), () => onStart(), (step) => { var _a; return (_a = this.ani) === null || _a === void 0 ? void 0 : _a.progressStep(step); }, (shouldComplete, step, dur) => {\n      if (this.ani) {\n        this.ani.onFinish(() => {\n          this.gestureOrAnimationInProgress = false;\n          if (this.swipeHandler) {\n            this.swipeHandler.onEnd(shouldComplete);\n          }\n        }, { oneTimeCallback: true });\n        // Account for rounding errors in JS\n        let newStepValue = shouldComplete ? -0.001 : 0.001;\n        /**\n         * Animation will be reversed here, so need to\n         * reverse the easing curve as well\n         *\n         * Additionally, we need to account for the time relative\n         * to the new easing curve, as `stepValue` is going to be given\n         * in terms of a linear curve.\n         */\n        if (!shouldComplete) {\n          this.ani.easing('cubic-bezier(1, 0, 0.68, 0.28)');\n          newStepValue += getTimeGivenProgression([0, 0], [1, 0], [0.68, 0.28], [1, 1], step)[0];\n        }\n        else {\n          newStepValue += getTimeGivenProgression([0, 0], [0.32, 0.72], [0, 1], [1, 1], step)[0];\n        }\n        this.ani.progressEnd(shouldComplete ? 1 : 0, newStepValue, dur);\n      }\n      else {\n        this.gestureOrAnimationInProgress = false;\n      }\n    });\n    this.swipeHandlerChanged();\n  }\n  componentWillLoad() {\n    this.ionNavWillLoad.emit();\n  }\n  disconnectedCallback() {\n    if (this.gesture) {\n      this.gesture.destroy();\n      this.gesture = undefined;\n    }\n  }\n  /** @internal */\n  async commit(enteringEl, leavingEl, opts) {\n    const unlock = await this.lockController.lock();\n    let changed = false;\n    try {\n      changed = await this.transition(enteringEl, leavingEl, opts);\n    }\n    catch (e) {\n      console.error(e);\n    }\n    unlock();\n    return changed;\n  }\n  /** @internal */\n  async setRouteId(id, params, direction, animation) {\n    const changed = await this.setRoot(id, params, {\n      duration: direction === 'root' ? 0 : undefined,\n      direction: direction === 'back' ? 'back' : 'forward',\n      animationBuilder: animation,\n    });\n    return {\n      changed,\n      element: this.activeEl,\n    };\n  }\n  /** @internal */\n  async getRouteId() {\n    const active = this.activeEl;\n    return active\n      ? {\n        id: active.tagName,\n        element: active,\n        params: this.activeParams,\n      }\n      : undefined;\n  }\n  async setRoot(component, params, opts) {\n    if (this.activeComponent === component && shallowEqualStringMap(params, this.activeParams)) {\n      return false;\n    }\n    // attach entering view to DOM\n    const leavingEl = this.activeEl;\n    const enteringEl = await attachComponent(this.delegate, this.el, component, ['ion-page', 'ion-page-invisible'], params);\n    this.activeComponent = component;\n    this.activeEl = enteringEl;\n    this.activeParams = params;\n    // commit animation\n    await this.commit(enteringEl, leavingEl, opts);\n    await detachComponent(this.delegate, leavingEl);\n    return true;\n  }\n  async transition(enteringEl, leavingEl, opts = {}) {\n    if (leavingEl === enteringEl) {\n      return false;\n    }\n    // emit nav will change event\n    this.ionNavWillChange.emit();\n    const { el, mode } = this;\n    const animated = this.animated && config.getBoolean('animated', true);\n    const animationBuilder = opts.animationBuilder || this.animation || config.get('navAnimation');\n    await transition(Object.assign(Object.assign({ mode,\n      animated,\n      enteringEl,\n      leavingEl, baseEl: el,\n      /**\n       * We need to wait for all Stencil components\n       * to be ready only when using the lazy\n       * loaded bundle.\n       */\n      deepWait: hasLazyBuild(el), progressCallback: opts.progressAnimation\n        ? (ani) => {\n          /**\n           * Because this progress callback is called asynchronously\n           * it is possible for the gesture to start and end before\n           * the animation is ever set. In that scenario, we should\n           * immediately call progressEnd so that the transition promise\n           * resolves and the gesture does not get locked up.\n           */\n          if (ani !== undefined && !this.gestureOrAnimationInProgress) {\n            this.gestureOrAnimationInProgress = true;\n            ani.onFinish(() => {\n              this.gestureOrAnimationInProgress = false;\n              if (this.swipeHandler) {\n                this.swipeHandler.onEnd(false);\n              }\n            }, { oneTimeCallback: true });\n            /**\n             * Playing animation to beginning\n             * with a duration of 0 prevents\n             * any flickering when the animation\n             * is later cleaned up.\n             */\n            ani.progressEnd(0, 0, 0);\n          }\n          else {\n            this.ani = ani;\n          }\n        }\n        : undefined }, opts), { animationBuilder }));\n    // emit nav changed event\n    this.ionNavDidChange.emit();\n    return true;\n  }\n  render() {\n    return h(\"slot\", null);\n  }\n  get el() { return this; }\n  static get watchers() { return {\n    \"swipeHandler\": [\"swipeHandlerChanged\"]\n  }; }\n  static get style() { return routerOutletCss; }\n}, [1, \"ion-router-outlet\", {\n    \"mode\": [1025],\n    \"delegate\": [16],\n    \"animated\": [4],\n    \"animation\": [16],\n    \"swipeHandler\": [16],\n    \"commit\": [64],\n    \"setRouteId\": [64],\n    \"getRouteId\": [64]\n  }, undefined, {\n    \"swipeHandler\": [\"swipeHandlerChanged\"]\n  }]);\nfunction defineCustomElement$1() {\n  if (typeof customElements === \"undefined\") {\n    return;\n  }\n  const components = [\"ion-router-outlet\"];\n  components.forEach(tagName => { switch (tagName) {\n    case \"ion-router-outlet\":\n      if (!customElements.get(tagName)) {\n        customElements.define(tagName, RouterOutlet);\n      }\n      break;\n  } });\n}\n\nconst IonRouterOutlet = RouterOutlet;\nconst defineCustomElement = defineCustomElement$1;\n\nexport { IonRouterOutlet, defineCustomElement };\n",
+      "start": 1700143041454,
+      "end": 1700143041623,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1700143041623,
+      "end": 1700143041623,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1700143041623,
+      "end": 1700143041623,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1700143041623,
+      "end": 1700143041623,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1700143041624,
+      "end": 1700143041624,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1700143041624,
+      "end": 1700143041624,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1700143041624,
+      "end": 1700143041624,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1700143041624,
+      "end": 1700143041624,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1700143041624,
+      "end": 1700143041624,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1700143041624,
+      "end": 1700143041624,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1700143041624,
+      "end": 1700143041624,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1700143041624,
+      "end": 1700143041624,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1700143041624,
+      "end": 1700143041624,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1700143041624,
+      "end": 1700143041624,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1700143041624,
+      "end": 1700143041624,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1700143041624,
+      "end": 1700143041624,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1700143041624,
+      "end": 1700143041624,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1700143041624,
+      "end": 1700143041624,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1700143041624,
+      "end": 1700143041624,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1700143041624,
+      "end": 1700143041624,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1700143041624,
+      "end": 1700143041624,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1700143041624,
+      "end": 1700143041625,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1700143041625,
+      "end": 1700143041625,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1700143041625,
+      "end": 1700143041625,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1700143041625,
+      "end": 1700143041625,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1700143041625,
+      "end": 1700143041625,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1700143041625,
+      "end": 1700143041625,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1700143041625,
+      "end": 1700143041625,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1700143041625,
+      "end": 1700143041625,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1700143041625,
+      "end": 1700143041625,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1700143041625,
+      "end": 1700143041625,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1700143041625,
+      "end": 1700143041625,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "result": "import { __vitePreload } from \"\u0000vite/preload-helper\";/*!\n * (C) Ionic http://ionicframework.com - MIT License\n */\nimport { proxyCustomElement, HTMLElement, createEvent, h } from '@stencil/core/internal/client';\nimport { g as getTimeGivenProgression } from './cubic-bezier.js';\nimport { a as attachComponent, d as detachComponent } from './framework-delegate.js';\nimport { s as shallowEqualStringMap, l as hasLazyBuild } from './helpers.js';\nimport { c as createLockController } from './lock-controller.js';\nimport { t as transition } from './index2.js';\nimport { b as getIonMode, c as config } from './ionic-global.js';\n\nconst routerOutletCss = \":host{left:0;right:0;top:0;bottom:0;position:absolute;contain:layout size style;z-index:0}\";\n\nconst RouterOutlet = /*@__PURE__*/ proxyCustomElement(class RouterOutlet extends HTMLElement {\n  constructor() {\n    super();\n    this.__registerHost();\n    this.__attachShadow();\n    this.ionNavWillLoad = createEvent(this, \"ionNavWillLoad\", 7);\n    this.ionNavWillChange = createEvent(this, \"ionNavWillChange\", 3);\n    this.ionNavDidChange = createEvent(this, \"ionNavDidChange\", 3);\n    this.lockController = createLockController();\n    this.gestureOrAnimationInProgress = false;\n    this.mode = getIonMode(this);\n    this.delegate = undefined;\n    this.animated = true;\n    this.animation = undefined;\n    this.swipeHandler = undefined;\n  }\n  swipeHandlerChanged() {\n    if (this.gesture) {\n      this.gesture.enable(this.swipeHandler !== undefined);\n    }\n  }\n  async connectedCallback() {\n    const onStart = () => {\n      this.gestureOrAnimationInProgress = true;\n      if (this.swipeHandler) {\n        this.swipeHandler.onStart();\n      }\n    };\n    this.gesture = (await __vitePreload(() => import('./swipe-back.js'),__VITE_IS_MODERN__?\"__VITE_PRELOAD__\":void 0,import.meta.url)).createSwipeBackGesture(this.el, () => !this.gestureOrAnimationInProgress && !!this.swipeHandler && this.swipeHandler.canStart(), () => onStart(), (step) => { var _a; return (_a = this.ani) === null || _a === void 0 ? void 0 : _a.progressStep(step); }, (shouldComplete, step, dur) => {\n      if (this.ani) {\n        this.ani.onFinish(() => {\n          this.gestureOrAnimationInProgress = false;\n          if (this.swipeHandler) {\n            this.swipeHandler.onEnd(shouldComplete);\n          }\n        }, { oneTimeCallback: true });\n        // Account for rounding errors in JS\n        let newStepValue = shouldComplete ? -0.001 : 0.001;\n        /**\n         * Animation will be reversed here, so need to\n         * reverse the easing curve as well\n         *\n         * Additionally, we need to account for the time relative\n         * to the new easing curve, as `stepValue` is going to be given\n         * in terms of a linear curve.\n         */\n        if (!shouldComplete) {\n          this.ani.easing('cubic-bezier(1, 0, 0.68, 0.28)');\n          newStepValue += getTimeGivenProgression([0, 0], [1, 0], [0.68, 0.28], [1, 1], step)[0];\n        }\n        else {\n          newStepValue += getTimeGivenProgression([0, 0], [0.32, 0.72], [0, 1], [1, 1], step)[0];\n        }\n        this.ani.progressEnd(shouldComplete ? 1 : 0, newStepValue, dur);\n      }\n      else {\n        this.gestureOrAnimationInProgress = false;\n      }\n    });\n    this.swipeHandlerChanged();\n  }\n  componentWillLoad() {\n    this.ionNavWillLoad.emit();\n  }\n  disconnectedCallback() {\n    if (this.gesture) {\n      this.gesture.destroy();\n      this.gesture = undefined;\n    }\n  }\n  /** @internal */\n  async commit(enteringEl, leavingEl, opts) {\n    const unlock = await this.lockController.lock();\n    let changed = false;\n    try {\n      changed = await this.transition(enteringEl, leavingEl, opts);\n    }\n    catch (e) {\n      console.error(e);\n    }\n    unlock();\n    return changed;\n  }\n  /** @internal */\n  async setRouteId(id, params, direction, animation) {\n    const changed = await this.setRoot(id, params, {\n      duration: direction === 'root' ? 0 : undefined,\n      direction: direction === 'back' ? 'back' : 'forward',\n      animationBuilder: animation,\n    });\n    return {\n      changed,\n      element: this.activeEl,\n    };\n  }\n  /** @internal */\n  async getRouteId() {\n    const active = this.activeEl;\n    return active\n      ? {\n        id: active.tagName,\n        element: active,\n        params: this.activeParams,\n      }\n      : undefined;\n  }\n  async setRoot(component, params, opts) {\n    if (this.activeComponent === component && shallowEqualStringMap(params, this.activeParams)) {\n      return false;\n    }\n    // attach entering view to DOM\n    const leavingEl = this.activeEl;\n    const enteringEl = await attachComponent(this.delegate, this.el, component, ['ion-page', 'ion-page-invisible'], params);\n    this.activeComponent = component;\n    this.activeEl = enteringEl;\n    this.activeParams = params;\n    // commit animation\n    await this.commit(enteringEl, leavingEl, opts);\n    await detachComponent(this.delegate, leavingEl);\n    return true;\n  }\n  async transition(enteringEl, leavingEl, opts = {}) {\n    if (leavingEl === enteringEl) {\n      return false;\n    }\n    // emit nav will change event\n    this.ionNavWillChange.emit();\n    const { el, mode } = this;\n    const animated = this.animated && config.getBoolean('animated', true);\n    const animationBuilder = opts.animationBuilder || this.animation || config.get('navAnimation');\n    await transition(Object.assign(Object.assign({ mode,\n      animated,\n      enteringEl,\n      leavingEl, baseEl: el,\n      /**\n       * We need to wait for all Stencil components\n       * to be ready only when using the lazy\n       * loaded bundle.\n       */\n      deepWait: hasLazyBuild(el), progressCallback: opts.progressAnimation\n        ? (ani) => {\n          /**\n           * Because this progress callback is called asynchronously\n           * it is possible for the gesture to start and end before\n           * the animation is ever set. In that scenario, we should\n           * immediately call progressEnd so that the transition promise\n           * resolves and the gesture does not get locked up.\n           */\n          if (ani !== undefined && !this.gestureOrAnimationInProgress) {\n            this.gestureOrAnimationInProgress = true;\n            ani.onFinish(() => {\n              this.gestureOrAnimationInProgress = false;\n              if (this.swipeHandler) {\n                this.swipeHandler.onEnd(false);\n              }\n            }, { oneTimeCallback: true });\n            /**\n             * Playing animation to beginning\n             * with a duration of 0 prevents\n             * any flickering when the animation\n             * is later cleaned up.\n             */\n            ani.progressEnd(0, 0, 0);\n          }\n          else {\n            this.ani = ani;\n          }\n        }\n        : undefined }, opts), { animationBuilder }));\n    // emit nav changed event\n    this.ionNavDidChange.emit();\n    return true;\n  }\n  render() {\n    return h(\"slot\", null);\n  }\n  get el() { return this; }\n  static get watchers() { return {\n    \"swipeHandler\": [\"swipeHandlerChanged\"]\n  }; }\n  static get style() { return routerOutletCss; }\n}, [1, \"ion-router-outlet\", {\n    \"mode\": [1025],\n    \"delegate\": [16],\n    \"animated\": [4],\n    \"animation\": [16],\n    \"swipeHandler\": [16],\n    \"commit\": [64],\n    \"setRouteId\": [64],\n    \"getRouteId\": [64]\n  }, undefined, {\n    \"swipeHandler\": [\"swipeHandlerChanged\"]\n  }]);\nfunction defineCustomElement$1() {\n  if (typeof customElements === \"undefined\") {\n    return;\n  }\n  const components = [\"ion-router-outlet\"];\n  components.forEach(tagName => { switch (tagName) {\n    case \"ion-router-outlet\":\n      if (!customElements.get(tagName)) {\n        customElements.define(tagName, RouterOutlet);\n      }\n      break;\n  } });\n}\n\nconst IonRouterOutlet = RouterOutlet;\nconst defineCustomElement = defineCustomElement$1;\n\nexport { IonRouterOutlet, defineCustomElement };\n",
+      "start": 1700143041625,
+      "end": 1700143041626,
+      "order": "normal",
+      "sourcemaps": null
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1700143041626,
+      "end": 1700143041626,
+      "order": "normal"
+    }
+  ]
+}

@@ -1,0 +1,210 @@
+{
+  "resolvedId": "C:/Users/Admin/Documents/Projects/Tinashe/trekr/trekr-frontend/node_modules/@ionic/core/components/ion-card-content.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "/*!\n * (C) Ionic http://ionicframework.com - MIT License\n */\nimport { proxyCustomElement, HTMLElement, h, Host } from '@stencil/core/internal/client';\nimport { b as getIonMode } from './ionic-global.js';\n\nconst cardContentIosCss = \"ion-card-content{display:block;position:relative}.card-content-ios{-webkit-padding-start:20px;padding-inline-start:20px;-webkit-padding-end:20px;padding-inline-end:20px;padding-top:20px;padding-bottom:20px;font-size:1rem;line-height:1.4}.card-content-ios h1{margin-left:0;margin-right:0;margin-top:0;margin-bottom:2px;font-size:1.5rem;font-weight:normal}.card-content-ios h2{margin-left:0;margin-right:0;margin-top:2px;margin-bottom:2px;font-size:1rem;font-weight:normal}.card-content-ios h3,.card-content-ios h4,.card-content-ios h5,.card-content-ios h6{margin-left:0;margin-right:0;margin-top:2px;margin-bottom:2px;font-size:0.875rem;font-weight:normal}.card-content-ios p{margin-left:0;margin-right:0;margin-top:0;margin-bottom:2px;font-size:0.875rem}ion-card-header+.card-content-ios{padding-top:0}\";\n\nconst cardContentMdCss = \"ion-card-content{display:block;position:relative}.card-content-md{-webkit-padding-start:16px;padding-inline-start:16px;-webkit-padding-end:16px;padding-inline-end:16px;padding-top:13px;padding-bottom:13px;font-size:0.875rem;line-height:1.5}.card-content-md h1{margin-left:0;margin-right:0;margin-top:0;margin-bottom:2px;font-size:1.5rem;font-weight:normal}.card-content-md h2{margin-left:0;margin-right:0;margin-top:2px;margin-bottom:2px;font-size:1rem;font-weight:normal}.card-content-md h3,.card-content-md h4,.card-content-md h5,.card-content-md h6{margin-left:0;margin-right:0;margin-top:2px;margin-bottom:2px;font-size:0.875rem;font-weight:normal}.card-content-md p{margin-left:0;margin-right:0;margin-top:0;margin-bottom:2px;font-size:0.875rem;font-weight:normal;line-height:1.5}ion-card-header+.card-content-md{padding-top:0}\";\n\nconst CardContent = /*@__PURE__*/ proxyCustomElement(class CardContent extends HTMLElement {\n  constructor() {\n    super();\n    this.__registerHost();\n  }\n  render() {\n    const mode = getIonMode(this);\n    return (h(Host, { class: {\n        [mode]: true,\n        // Used internally for styling\n        [`card-content-${mode}`]: true,\n      } }));\n  }\n  static get style() { return {\n    ios: cardContentIosCss,\n    md: cardContentMdCss\n  }; }\n}, [32, \"ion-card-content\"]);\nfunction defineCustomElement$1() {\n  if (typeof customElements === \"undefined\") {\n    return;\n  }\n  const components = [\"ion-card-content\"];\n  components.forEach(tagName => { switch (tagName) {\n    case \"ion-card-content\":\n      if (!customElements.get(tagName)) {\n        customElements.define(tagName, CardContent);\n      }\n      break;\n  } });\n}\n\nconst IonCardContent = CardContent;\nconst defineCustomElement = defineCustomElement$1;\n\nexport { IonCardContent, defineCustomElement };\n",
+      "start": 1700143041003,
+      "end": 1700143041116,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1700143041116,
+      "end": 1700143041116,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1700143041116,
+      "end": 1700143041116,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1700143041116,
+      "end": 1700143041116,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1700143041116,
+      "end": 1700143041116,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1700143041116,
+      "end": 1700143041116,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1700143041116,
+      "end": 1700143041116,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1700143041116,
+      "end": 1700143041116,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1700143041116,
+      "end": 1700143041116,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1700143041116,
+      "end": 1700143041116,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1700143041116,
+      "end": 1700143041117,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1700143041117,
+      "end": 1700143041117,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1700143041117,
+      "end": 1700143041117,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1700143041117,
+      "end": 1700143041117,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1700143041117,
+      "end": 1700143041117,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1700143041117,
+      "end": 1700143041117,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1700143041117,
+      "end": 1700143041117,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1700143041117,
+      "end": 1700143041117,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1700143041117,
+      "end": 1700143041117,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1700143041117,
+      "end": 1700143041117,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1700143041117,
+      "end": 1700143041117,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1700143041117,
+      "end": 1700143041118,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1700143041118,
+      "end": 1700143041118,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1700143041118,
+      "end": 1700143041118,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1700143041118,
+      "end": 1700143041118,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1700143041118,
+      "end": 1700143041118,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1700143041118,
+      "end": 1700143041118,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1700143041118,
+      "end": 1700143041118,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1700143041118,
+      "end": 1700143041118,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1700143041118,
+      "end": 1700143041118,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1700143041118,
+      "end": 1700143041118,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1700143041118,
+      "end": 1700143041118,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1700143041118,
+      "end": 1700143041118,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1700143041118,
+      "end": 1700143041118,
+      "order": "normal"
+    }
+  ]
+}

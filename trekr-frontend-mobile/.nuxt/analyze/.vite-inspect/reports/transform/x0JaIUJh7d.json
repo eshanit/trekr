@@ -1,0 +1,210 @@
+{
+  "resolvedId": "C:/Users/Admin/Documents/Projects/Tinashe/trekr/trekr-frontend/node_modules/@ionic/core/components/ion-fab-list.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "/*!\n * (C) Ionic http://ionicframework.com - MIT License\n */\nimport { proxyCustomElement, HTMLElement, h, Host } from '@stencil/core/internal/client';\nimport { b as getIonMode } from './ionic-global.js';\n\nconst fabListCss = \":host{margin-left:0;margin-right:0;margin-top:calc(100% + 10px);margin-bottom:calc(100% + 10px);display:none;position:absolute;top:0;-ms-flex-direction:column;flex-direction:column;-ms-flex-align:center;align-items:center;min-width:56px;min-height:56px}:host(.fab-list-active){display:-ms-flexbox;display:flex}::slotted(.fab-button-in-list){margin-left:0;margin-right:0;margin-top:8px;margin-bottom:8px;width:40px;height:40px;-webkit-transform:scale(0);transform:scale(0);opacity:0;visibility:hidden}:host(.fab-list-side-top) ::slotted(.fab-button-in-list),:host(.fab-list-side-bottom) ::slotted(.fab-button-in-list){margin-left:0;margin-right:0;margin-top:5px;margin-bottom:5px}:host(.fab-list-side-start) ::slotted(.fab-button-in-list),:host(.fab-list-side-end) ::slotted(.fab-button-in-list){-webkit-margin-start:5px;margin-inline-start:5px;-webkit-margin-end:5px;margin-inline-end:5px;margin-top:0;margin-bottom:0}::slotted(.fab-button-in-list.fab-button-show){-webkit-transform:scale(1);transform:scale(1);opacity:1;visibility:visible}:host(.fab-list-side-top){top:auto;bottom:0;-ms-flex-direction:column-reverse;flex-direction:column-reverse}:host(.fab-list-side-start){-webkit-margin-start:calc(100% + 10px);margin-inline-start:calc(100% + 10px);-webkit-margin-end:calc(100% + 10px);margin-inline-end:calc(100% + 10px);margin-top:0;margin-bottom:0;-ms-flex-direction:row-reverse;flex-direction:row-reverse}@supports (inset-inline-start: 0){:host(.fab-list-side-start){inset-inline-end:0}}@supports not (inset-inline-start: 0){:host(.fab-list-side-start){right:0}:host-context([dir=rtl]):host(.fab-list-side-start),:host-context([dir=rtl]).fab-list-side-start{left:unset;right:unset;left:0}@supports selector(:dir(rtl)){:host(.fab-list-side-start:dir(rtl)){left:unset;right:unset;left:0}}}:host(.fab-list-side-end){-webkit-margin-start:calc(100% + 10px);margin-inline-start:calc(100% + 10px);-webkit-margin-end:calc(100% + 10px);margin-inline-end:calc(100% + 10px);margin-top:0;margin-bottom:0;-ms-flex-direction:row;flex-direction:row}@supports (inset-inline-start: 0){:host(.fab-list-side-end){inset-inline-start:0}}@supports not (inset-inline-start: 0){:host(.fab-list-side-end){left:0}:host-context([dir=rtl]):host(.fab-list-side-end),:host-context([dir=rtl]).fab-list-side-end{left:unset;right:unset;right:0}@supports selector(:dir(rtl)){:host(.fab-list-side-end:dir(rtl)){left:unset;right:unset;right:0}}}\";\n\nconst FabList = /*@__PURE__*/ proxyCustomElement(class FabList extends HTMLElement {\n  constructor() {\n    super();\n    this.__registerHost();\n    this.__attachShadow();\n    this.activated = false;\n    this.side = 'bottom';\n  }\n  activatedChanged(activated) {\n    const fabs = Array.from(this.el.querySelectorAll('ion-fab-button'));\n    // if showing the fabs add a timeout, else show immediately\n    const timeout = activated ? 30 : 0;\n    fabs.forEach((fab, i) => {\n      setTimeout(() => (fab.show = activated), i * timeout);\n    });\n  }\n  render() {\n    const mode = getIonMode(this);\n    return (h(Host, { class: {\n        [mode]: true,\n        'fab-list-active': this.activated,\n        [`fab-list-side-${this.side}`]: true,\n      } }, h(\"slot\", null)));\n  }\n  get el() { return this; }\n  static get watchers() { return {\n    \"activated\": [\"activatedChanged\"]\n  }; }\n  static get style() { return fabListCss; }\n}, [1, \"ion-fab-list\", {\n    \"activated\": [4],\n    \"side\": [1]\n  }, undefined, {\n    \"activated\": [\"activatedChanged\"]\n  }]);\nfunction defineCustomElement$1() {\n  if (typeof customElements === \"undefined\") {\n    return;\n  }\n  const components = [\"ion-fab-list\"];\n  components.forEach(tagName => { switch (tagName) {\n    case \"ion-fab-list\":\n      if (!customElements.get(tagName)) {\n        customElements.define(tagName, FabList);\n      }\n      break;\n  } });\n}\n\nconst IonFabList = FabList;\nconst defineCustomElement = defineCustomElement$1;\n\nexport { IonFabList, defineCustomElement };\n",
+      "start": 1700143041071,
+      "end": 1700143041170,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1700143041170,
+      "end": 1700143041170,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1700143041170,
+      "end": 1700143041170,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1700143041170,
+      "end": 1700143041170,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1700143041170,
+      "end": 1700143041170,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1700143041170,
+      "end": 1700143041170,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1700143041170,
+      "end": 1700143041170,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1700143041170,
+      "end": 1700143041170,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1700143041170,
+      "end": 1700143041170,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1700143041170,
+      "end": 1700143041170,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1700143041170,
+      "end": 1700143041170,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1700143041170,
+      "end": 1700143041170,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1700143041170,
+      "end": 1700143041171,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1700143041171,
+      "end": 1700143041171,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1700143041171,
+      "end": 1700143041171,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1700143041171,
+      "end": 1700143041171,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1700143041171,
+      "end": 1700143041171,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1700143041171,
+      "end": 1700143041171,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1700143041171,
+      "end": 1700143041171,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1700143041171,
+      "end": 1700143041171,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1700143041171,
+      "end": 1700143041171,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1700143041171,
+      "end": 1700143041172,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1700143041172,
+      "end": 1700143041172,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1700143041172,
+      "end": 1700143041172,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1700143041172,
+      "end": 1700143041172,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1700143041172,
+      "end": 1700143041172,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1700143041172,
+      "end": 1700143041172,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1700143041172,
+      "end": 1700143041172,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1700143041172,
+      "end": 1700143041172,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1700143041172,
+      "end": 1700143041172,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1700143041172,
+      "end": 1700143041172,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1700143041172,
+      "end": 1700143041172,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1700143041173,
+      "end": 1700143041173,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1700143041173,
+      "end": 1700143041173,
+      "order": "normal"
+    }
+  ]
+}

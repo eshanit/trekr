@@ -1,0 +1,210 @@
+{
+  "resolvedId": "C:/Users/Admin/Documents/Projects/Tinashe/trekr/trekr-frontend/node_modules/ionicons/components/utils.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "import { getAssetPath } from '@stencil/core/internal/client';\n\nlet CACHED_MAP;\nconst getIconMap = () => {\n  if (typeof window === 'undefined') {\n    return new Map();\n  }\n  else {\n    if (!CACHED_MAP) {\n      const win = window;\n      win.Ionicons = win.Ionicons || {};\n      CACHED_MAP = win.Ionicons.map = win.Ionicons.map || new Map();\n    }\n    return CACHED_MAP;\n  }\n};\nconst addIcons = (icons) => {\n  Object.keys(icons).forEach(name => {\n    addToIconMap(name, icons[name]);\n    /**\n     * Developers can also pass in the SVG object directly\n     * and Ionicons can map the object to a kebab case name.\n     * Example: addIcons({ addCircleOutline });\n     * This will create an \"addCircleOutline\" entry and\n     * an \"add-circle-outline\" entry.\n     * Usage: <ion-icon name=\"add-circle-outline\"></ion-icon>\n     * Using name=\"addCircleOutline\" is valid too, but the\n     * kebab case naming is preferred.\n     */\n    const toKebabCase = name.replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, \"$1-$2\").toLowerCase();\n    if (name !== toKebabCase) {\n      addToIconMap(toKebabCase, icons[name]);\n    }\n  });\n};\nconst addToIconMap = (name, data) => {\n  const map = getIconMap();\n  const existingIcon = map.get(name);\n  if (existingIcon === undefined) {\n    map.set(name, data);\n    /**\n     * Importing and defining the same icon reference\n     * multiple times should not yield a warning.\n     */\n  }\n  else if (existingIcon !== data) {\n    console.warn(`[Ionicons Warning]: Multiple icons were mapped to name \"${name}\". Ensure that multiple icons are not mapped to the same icon name.`);\n  }\n};\nconst getUrl = (i) => {\n  let url = getSrc(i.src);\n  if (url) {\n    return url;\n  }\n  url = getName(i.name, i.icon, i.mode, i.ios, i.md);\n  if (url) {\n    return getNamedUrl(url);\n  }\n  if (i.icon) {\n    url = getSrc(i.icon);\n    if (url) {\n      return url;\n    }\n    url = getSrc(i.icon[i.mode]);\n    if (url) {\n      return url;\n    }\n  }\n  return null;\n};\nconst getNamedUrl = (iconName) => {\n  const url = getIconMap().get(iconName);\n  if (url) {\n    return url;\n  }\n  return getAssetPath(`svg/${iconName}.svg`);\n};\nconst getName = (iconName, icon, mode, ios, md) => {\n  // default to \"md\" if somehow the mode wasn't set\n  mode = (mode && toLower(mode)) === 'ios' ? 'ios' : 'md';\n  // if an icon was passed in using the ios or md attributes\n  // set the iconName to whatever was passed in\n  if (ios && mode === 'ios') {\n    iconName = toLower(ios);\n  }\n  else if (md && mode === 'md') {\n    iconName = toLower(md);\n  }\n  else {\n    if (!iconName && icon && !isSrc(icon)) {\n      iconName = icon;\n    }\n    if (isStr(iconName)) {\n      iconName = toLower(iconName);\n    }\n  }\n  if (!isStr(iconName) || iconName.trim() === '') {\n    return null;\n  }\n  // only allow alpha characters and dash\n  const invalidChars = iconName.replace(/[a-z]|-|\\d/gi, '');\n  if (invalidChars !== '') {\n    return null;\n  }\n  return iconName;\n};\nconst getSrc = (src) => {\n  if (isStr(src)) {\n    src = src.trim();\n    if (isSrc(src)) {\n      return src;\n    }\n  }\n  return null;\n};\nconst isSrc = (str) => str.length > 0 && /(\\/|\\.)/.test(str);\nconst isStr = (val) => typeof val === 'string';\nconst toLower = (val) => val.toLowerCase();\n/**\n * Elements inside of web components sometimes need to inherit global attributes\n * set on the host. For example, the inner input in `ion-input` should inherit\n * the `title` attribute that developers set directly on `ion-input`. This\n * helper function should be called in componentWillLoad and assigned to a variable\n * that is later used in the render function.\n *\n * This does not need to be reactive as changing attributes on the host element\n * does not trigger a re-render.\n */\nconst inheritAttributes = (el, attributes = []) => {\n  const attributeObject = {};\n  attributes.forEach(attr => {\n    if (el.hasAttribute(attr)) {\n      const value = el.getAttribute(attr);\n      if (value !== null) {\n        attributeObject[attr] = el.getAttribute(attr);\n      }\n      el.removeAttribute(attr);\n    }\n  });\n  return attributeObject;\n};\n/**\n * Returns `true` if the document or host element\n * has a `dir` set to `rtl`. The host value will always\n * take priority over the root document value.\n */\nconst isRTL = (hostEl) => {\n  if (hostEl) {\n    if (hostEl.dir !== '') {\n      return hostEl.dir.toLowerCase() === 'rtl';\n    }\n  }\n  return (document === null || document === void 0 ? void 0 : document.dir.toLowerCase()) === 'rtl';\n};\n\nexport { addIcons as a, inheritAttributes as b, getName as c, isRTL as d, getUrl as g, isStr as i };\n",
+      "start": 1700143042386,
+      "end": 1700143042532,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1700143042532,
+      "end": 1700143042532,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1700143042532,
+      "end": 1700143042532,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1700143042532,
+      "end": 1700143042532,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1700143042532,
+      "end": 1700143042532,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1700143042532,
+      "end": 1700143042532,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1700143042532,
+      "end": 1700143042532,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1700143042532,
+      "end": 1700143042532,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1700143042532,
+      "end": 1700143042532,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1700143042532,
+      "end": 1700143042532,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1700143042532,
+      "end": 1700143042532,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1700143042532,
+      "end": 1700143042532,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1700143042533,
+      "end": 1700143042533,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1700143042533,
+      "end": 1700143042533,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1700143042533,
+      "end": 1700143042533,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1700143042533,
+      "end": 1700143042533,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1700143042533,
+      "end": 1700143042533,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1700143042533,
+      "end": 1700143042533,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1700143042533,
+      "end": 1700143042533,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1700143042533,
+      "end": 1700143042533,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1700143042533,
+      "end": 1700143042533,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1700143042533,
+      "end": 1700143042533,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1700143042533,
+      "end": 1700143042533,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1700143042533,
+      "end": 1700143042533,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1700143042533,
+      "end": 1700143042533,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1700143042533,
+      "end": 1700143042533,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1700143042533,
+      "end": 1700143042533,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1700143042533,
+      "end": 1700143042534,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1700143042534,
+      "end": 1700143042534,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1700143042534,
+      "end": 1700143042534,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1700143042534,
+      "end": 1700143042534,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1700143042534,
+      "end": 1700143042534,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1700143042534,
+      "end": 1700143042534,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1700143042534,
+      "end": 1700143042534,
+      "order": "normal"
+    }
+  ]
+}

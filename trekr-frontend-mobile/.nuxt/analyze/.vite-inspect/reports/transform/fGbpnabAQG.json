@@ -1,0 +1,210 @@
+{
+  "resolvedId": "C:/Users/Admin/Documents/Projects/Tinashe/trekr/trekr-frontend/node_modules/@ionic/core/components/status-tap.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "/*!\n * (C) Ionic http://ionicframework.com - MIT License\n */\nimport { readTask, writeTask } from '@stencil/core/internal/client';\nimport { a as findClosestIonContent, s as scrollToTop } from './index8.js';\nimport { c as componentOnReady } from './helpers.js';\n\nconst startStatusTap = () => {\n  const win = window;\n  win.addEventListener('statusTap', () => {\n    readTask(() => {\n      const width = win.innerWidth;\n      const height = win.innerHeight;\n      const el = document.elementFromPoint(width / 2, height / 2);\n      if (!el) {\n        return;\n      }\n      const contentEl = findClosestIonContent(el);\n      if (contentEl) {\n        new Promise((resolve) => componentOnReady(contentEl, resolve)).then(() => {\n          writeTask(async () => {\n            /**\n             * If scrolling and user taps status bar,\n             * only calling scrollToTop is not enough\n             * as engines like WebKit will jump the\n             * scroll position back down and complete\n             * any in-progress momentum scrolling.\n             */\n            contentEl.style.setProperty('--overflow', 'hidden');\n            await scrollToTop(contentEl, 300);\n            contentEl.style.removeProperty('--overflow');\n          });\n        });\n      }\n    });\n  });\n};\n\nexport { startStatusTap };\n",
+      "start": 1700143042360,
+      "end": 1700143042515,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1700143042515,
+      "end": 1700143042515,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1700143042515,
+      "end": 1700143042515,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1700143042515,
+      "end": 1700143042515,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1700143042515,
+      "end": 1700143042515,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1700143042515,
+      "end": 1700143042515,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1700143042515,
+      "end": 1700143042515,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1700143042515,
+      "end": 1700143042515,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1700143042515,
+      "end": 1700143042515,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1700143042515,
+      "end": 1700143042516,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1700143042516,
+      "end": 1700143042516,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1700143042516,
+      "end": 1700143042516,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1700143042516,
+      "end": 1700143042516,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1700143042516,
+      "end": 1700143042516,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1700143042516,
+      "end": 1700143042516,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1700143042516,
+      "end": 1700143042516,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1700143042516,
+      "end": 1700143042516,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1700143042516,
+      "end": 1700143042516,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1700143042516,
+      "end": 1700143042516,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1700143042516,
+      "end": 1700143042516,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1700143042516,
+      "end": 1700143042516,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1700143042516,
+      "end": 1700143042516,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1700143042516,
+      "end": 1700143042516,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1700143042516,
+      "end": 1700143042516,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1700143042516,
+      "end": 1700143042516,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1700143042516,
+      "end": 1700143042516,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1700143042516,
+      "end": 1700143042516,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1700143042516,
+      "end": 1700143042516,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1700143042516,
+      "end": 1700143042516,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1700143042516,
+      "end": 1700143042516,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1700143042516,
+      "end": 1700143042516,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1700143042516,
+      "end": 1700143042516,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1700143042516,
+      "end": 1700143042516,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1700143042516,
+      "end": 1700143042516,
+      "order": "normal"
+    }
+  ]
+}

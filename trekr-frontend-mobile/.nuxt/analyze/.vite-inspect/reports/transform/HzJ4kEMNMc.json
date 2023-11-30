@@ -1,0 +1,210 @@
+{
+  "resolvedId": "C:/Users/Admin/Documents/Projects/Tinashe/trekr/trekr-frontend/node_modules/@ionic/core/components/ion-loading.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "/*!\n * (C) Ionic http://ionicframework.com - MIT License\n */\nimport { proxyCustomElement, HTMLElement, createEvent, h, Host } from '@stencil/core/internal/client';\nimport { E as ENABLE_HTML_CONTENT_DEFAULT, a as sanitizeDOMString } from './config.js';\nimport { r as raf } from './helpers.js';\nimport { c as createLockController } from './lock-controller.js';\nimport { d as createDelegateController, e as createTriggerController, B as BACKDROP, j as prepareOverlay, k as setOverlayId, f as present, g as dismiss, h as eventMethod } from './overlays.js';\nimport { g as getClassMap } from './theme.js';\nimport { c as config, b as getIonMode } from './ionic-global.js';\nimport { c as createAnimation } from './animation.js';\nimport { d as defineCustomElement$3 } from './backdrop.js';\nimport { d as defineCustomElement$2 } from './spinner.js';\n\n/**\n * iOS Loading Enter Animation\n */\nconst iosEnterAnimation = (baseEl) => {\n  const baseAnimation = createAnimation();\n  const backdropAnimation = createAnimation();\n  const wrapperAnimation = createAnimation();\n  backdropAnimation\n    .addElement(baseEl.querySelector('ion-backdrop'))\n    .fromTo('opacity', 0.01, 'var(--backdrop-opacity)')\n    .beforeStyles({\n    'pointer-events': 'none',\n  })\n    .afterClearStyles(['pointer-events']);\n  wrapperAnimation.addElement(baseEl.querySelector('.loading-wrapper')).keyframes([\n    { offset: 0, opacity: 0.01, transform: 'scale(1.1)' },\n    { offset: 1, opacity: 1, transform: 'scale(1)' },\n  ]);\n  return baseAnimation\n    .addElement(baseEl)\n    .easing('ease-in-out')\n    .duration(200)\n    .addAnimation([backdropAnimation, wrapperAnimation]);\n};\n\n/**\n * iOS Loading Leave Animation\n */\nconst iosLeaveAnimation = (baseEl) => {\n  const baseAnimation = createAnimation();\n  const backdropAnimation = createAnimation();\n  const wrapperAnimation = createAnimation();\n  backdropAnimation.addElement(baseEl.querySelector('ion-backdrop')).fromTo('opacity', 'var(--backdrop-opacity)', 0);\n  wrapperAnimation.addElement(baseEl.querySelector('.loading-wrapper')).keyframes([\n    { offset: 0, opacity: 0.99, transform: 'scale(1)' },\n    { offset: 1, opacity: 0, transform: 'scale(0.9)' },\n  ]);\n  return baseAnimation\n    .addElement(baseEl)\n    .easing('ease-in-out')\n    .duration(200)\n    .addAnimation([backdropAnimation, wrapperAnimation]);\n};\n\n/**\n * Md Loading Enter Animation\n */\nconst mdEnterAnimation = (baseEl) => {\n  const baseAnimation = createAnimation();\n  const backdropAnimation = createAnimation();\n  const wrapperAnimation = createAnimation();\n  backdropAnimation\n    .addElement(baseEl.querySelector('ion-backdrop'))\n    .fromTo('opacity', 0.01, 'var(--backdrop-opacity)')\n    .beforeStyles({\n    'pointer-events': 'none',\n  })\n    .afterClearStyles(['pointer-events']);\n  wrapperAnimation.addElement(baseEl.querySelector('.loading-wrapper')).keyframes([\n    { offset: 0, opacity: 0.01, transform: 'scale(1.1)' },\n    { offset: 1, opacity: 1, transform: 'scale(1)' },\n  ]);\n  return baseAnimation\n    .addElement(baseEl)\n    .easing('ease-in-out')\n    .duration(200)\n    .addAnimation([backdropAnimation, wrapperAnimation]);\n};\n\n/**\n * Md Loading Leave Animation\n */\nconst mdLeaveAnimation = (baseEl) => {\n  const baseAnimation = createAnimation();\n  const backdropAnimation = createAnimation();\n  const wrapperAnimation = createAnimation();\n  backdropAnimation.addElement(baseEl.querySelector('ion-backdrop')).fromTo('opacity', 'var(--backdrop-opacity)', 0);\n  wrapperAnimation.addElement(baseEl.querySelector('.loading-wrapper')).keyframes([\n    { offset: 0, opacity: 0.99, transform: 'scale(1)' },\n    { offset: 1, opacity: 0, transform: 'scale(0.9)' },\n  ]);\n  return baseAnimation\n    .addElement(baseEl)\n    .easing('ease-in-out')\n    .duration(200)\n    .addAnimation([backdropAnimation, wrapperAnimation]);\n};\n\nconst loadingIosCss = \".sc-ion-loading-ios-h{--min-width:auto;--width:auto;--min-height:auto;--height:auto;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;left:0;right:0;top:0;bottom:0;display:-ms-flexbox;display:flex;position:fixed;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;outline:none;font-family:var(--ion-font-family, inherit);contain:strict;-ms-touch-action:none;touch-action:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;z-index:1001}.overlay-hidden.sc-ion-loading-ios-h{display:none}.loading-wrapper.sc-ion-loading-ios{display:-ms-flexbox;display:flex;-ms-flex-align:inherit;align-items:inherit;-ms-flex-pack:inherit;justify-content:inherit;width:var(--width);min-width:var(--min-width);max-width:var(--max-width);height:var(--height);min-height:var(--min-height);max-height:var(--max-height);background:var(--background);opacity:0;z-index:10}ion-spinner.sc-ion-loading-ios{color:var(--spinner-color)}.sc-ion-loading-ios-h{--background:var(--ion-overlay-background-color, var(--ion-color-step-100, #f9f9f9));--max-width:270px;--max-height:90%;--spinner-color:var(--ion-color-step-600, #666666);--backdrop-opacity:var(--ion-backdrop-opacity, 0.3);color:var(--ion-text-color, #000);font-size:0.875rem}.loading-wrapper.sc-ion-loading-ios{border-radius:8px;-webkit-padding-start:34px;padding-inline-start:34px;-webkit-padding-end:34px;padding-inline-end:34px;padding-top:24px;padding-bottom:24px}@supports ((-webkit-backdrop-filter: blur(0)) or (backdrop-filter: blur(0))){.loading-translucent.sc-ion-loading-ios-h .loading-wrapper.sc-ion-loading-ios{background-color:rgba(var(--ion-background-color-rgb, 255, 255, 255), 0.8);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px)}}.loading-content.sc-ion-loading-ios{font-weight:bold}.loading-spinner.sc-ion-loading-ios+.loading-content.sc-ion-loading-ios{-webkit-margin-start:16px;margin-inline-start:16px}\";\n\nconst loadingMdCss = \".sc-ion-loading-md-h{--min-width:auto;--width:auto;--min-height:auto;--height:auto;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;left:0;right:0;top:0;bottom:0;display:-ms-flexbox;display:flex;position:fixed;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;outline:none;font-family:var(--ion-font-family, inherit);contain:strict;-ms-touch-action:none;touch-action:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;z-index:1001}.overlay-hidden.sc-ion-loading-md-h{display:none}.loading-wrapper.sc-ion-loading-md{display:-ms-flexbox;display:flex;-ms-flex-align:inherit;align-items:inherit;-ms-flex-pack:inherit;justify-content:inherit;width:var(--width);min-width:var(--min-width);max-width:var(--max-width);height:var(--height);min-height:var(--min-height);max-height:var(--max-height);background:var(--background);opacity:0;z-index:10}ion-spinner.sc-ion-loading-md{color:var(--spinner-color)}.sc-ion-loading-md-h{--background:var(--ion-color-step-50, #f2f2f2);--max-width:280px;--max-height:90%;--spinner-color:var(--ion-color-primary, #3880ff);--backdrop-opacity:var(--ion-backdrop-opacity, 0.32);color:var(--ion-color-step-850, #262626);font-size:0.875rem}.loading-wrapper.sc-ion-loading-md{border-radius:2px;-webkit-padding-start:24px;padding-inline-start:24px;-webkit-padding-end:24px;padding-inline-end:24px;padding-top:24px;padding-bottom:24px;-webkit-box-shadow:0 16px 20px rgba(0, 0, 0, 0.4);box-shadow:0 16px 20px rgba(0, 0, 0, 0.4)}.loading-spinner.sc-ion-loading-md+.loading-content.sc-ion-loading-md{-webkit-margin-start:16px;margin-inline-start:16px}\";\n\nconst Loading = /*@__PURE__*/ proxyCustomElement(class Loading extends HTMLElement {\n  constructor() {\n    super();\n    this.__registerHost();\n    this.didPresent = createEvent(this, \"ionLoadingDidPresent\", 7);\n    this.willPresent = createEvent(this, \"ionLoadingWillPresent\", 7);\n    this.willDismiss = createEvent(this, \"ionLoadingWillDismiss\", 7);\n    this.didDismiss = createEvent(this, \"ionLoadingDidDismiss\", 7);\n    this.didPresentShorthand = createEvent(this, \"didPresent\", 7);\n    this.willPresentShorthand = createEvent(this, \"willPresent\", 7);\n    this.willDismissShorthand = createEvent(this, \"willDismiss\", 7);\n    this.didDismissShorthand = createEvent(this, \"didDismiss\", 7);\n    this.delegateController = createDelegateController(this);\n    this.lockController = createLockController();\n    this.triggerController = createTriggerController();\n    this.customHTMLEnabled = config.get('innerHTMLTemplatesEnabled', ENABLE_HTML_CONTENT_DEFAULT);\n    this.presented = false;\n    this.onBackdropTap = () => {\n      this.dismiss(undefined, BACKDROP);\n    };\n    this.overlayIndex = undefined;\n    this.delegate = undefined;\n    this.hasController = false;\n    this.keyboardClose = true;\n    this.enterAnimation = undefined;\n    this.leaveAnimation = undefined;\n    this.message = undefined;\n    this.cssClass = undefined;\n    this.duration = 0;\n    this.backdropDismiss = false;\n    this.showBackdrop = true;\n    this.spinner = undefined;\n    this.translucent = false;\n    this.animated = true;\n    this.htmlAttributes = undefined;\n    this.isOpen = false;\n    this.trigger = undefined;\n  }\n  onIsOpenChange(newValue, oldValue) {\n    if (newValue === true && oldValue === false) {\n      this.present();\n    }\n    else if (newValue === false && oldValue === true) {\n      this.dismiss();\n    }\n  }\n  triggerChanged() {\n    const { trigger, el, triggerController } = this;\n    if (trigger) {\n      triggerController.addClickListener(el, trigger);\n    }\n  }\n  connectedCallback() {\n    prepareOverlay(this.el);\n    this.triggerChanged();\n  }\n  componentWillLoad() {\n    if (this.spinner === undefined) {\n      const mode = getIonMode(this);\n      this.spinner = config.get('loadingSpinner', config.get('spinner', mode === 'ios' ? 'lines' : 'crescent'));\n    }\n    setOverlayId(this.el);\n  }\n  componentDidLoad() {\n    /**\n     * If loading indicator was rendered with isOpen=\"true\"\n     * then we should open loading indicator immediately.\n     */\n    if (this.isOpen === true) {\n      raf(() => this.present());\n    }\n  }\n  disconnectedCallback() {\n    this.triggerController.removeClickListener();\n  }\n  /**\n   * Present the loading overlay after it has been created.\n   */\n  async present() {\n    const unlock = await this.lockController.lock();\n    await this.delegateController.attachViewToDom();\n    await present(this, 'loadingEnter', iosEnterAnimation, mdEnterAnimation);\n    if (this.duration > 0) {\n      this.durationTimeout = setTimeout(() => this.dismiss(), this.duration + 10);\n    }\n    unlock();\n  }\n  /**\n   * Dismiss the loading overlay after it has been presented.\n   *\n   * @param data Any data to emit in the dismiss events.\n   * @param role The role of the element that is dismissing the loading.\n   * This can be useful in a button handler for determining which button was\n   * clicked to dismiss the loading.\n   * Some examples include: ``\"cancel\"`, `\"destructive\"`, \"selected\"`, and `\"backdrop\"`.\n   */\n  async dismiss(data, role) {\n    const unlock = await this.lockController.lock();\n    if (this.durationTimeout) {\n      clearTimeout(this.durationTimeout);\n    }\n    const dismissed = await dismiss(this, data, role, 'loadingLeave', iosLeaveAnimation, mdLeaveAnimation);\n    if (dismissed) {\n      this.delegateController.removeViewFromDom();\n    }\n    unlock();\n    return dismissed;\n  }\n  /**\n   * Returns a promise that resolves when the loading did dismiss.\n   */\n  onDidDismiss() {\n    return eventMethod(this.el, 'ionLoadingDidDismiss');\n  }\n  /**\n   * Returns a promise that resolves when the loading will dismiss.\n   */\n  onWillDismiss() {\n    return eventMethod(this.el, 'ionLoadingWillDismiss');\n  }\n  renderLoadingMessage(msgId) {\n    const { customHTMLEnabled, message } = this;\n    if (customHTMLEnabled) {\n      return h(\"div\", { class: \"loading-content\", id: msgId, innerHTML: sanitizeDOMString(message) });\n    }\n    return (h(\"div\", { class: \"loading-content\", id: msgId }, message));\n  }\n  render() {\n    const { message, spinner, htmlAttributes, overlayIndex } = this;\n    const mode = getIonMode(this);\n    const msgId = `loading-${overlayIndex}-msg`;\n    /**\n     * If the message is defined, use that as the label.\n     * Otherwise, don't set aria-labelledby.\n     */\n    const ariaLabelledBy = message !== undefined ? msgId : null;\n    return (h(Host, Object.assign({ role: \"dialog\", \"aria-modal\": \"true\", \"aria-labelledby\": ariaLabelledBy, tabindex: \"-1\" }, htmlAttributes, { style: {\n        zIndex: `${40000 + this.overlayIndex}`,\n      }, onIonBackdropTap: this.onBackdropTap, class: Object.assign(Object.assign({}, getClassMap(this.cssClass)), { [mode]: true, 'overlay-hidden': true, 'loading-translucent': this.translucent }) }), h(\"ion-backdrop\", { visible: this.showBackdrop, tappable: this.backdropDismiss }), h(\"div\", { tabindex: \"0\" }), h(\"div\", { class: \"loading-wrapper ion-overlay-wrapper\" }, spinner && (h(\"div\", { class: \"loading-spinner\" }, h(\"ion-spinner\", { name: spinner, \"aria-hidden\": \"true\" }))), message !== undefined && this.renderLoadingMessage(msgId)), h(\"div\", { tabindex: \"0\" })));\n  }\n  get el() { return this; }\n  static get watchers() { return {\n    \"isOpen\": [\"onIsOpenChange\"],\n    \"trigger\": [\"triggerChanged\"]\n  }; }\n  static get style() { return {\n    ios: loadingIosCss,\n    md: loadingMdCss\n  }; }\n}, [34, \"ion-loading\", {\n    \"overlayIndex\": [2, \"overlay-index\"],\n    \"delegate\": [16],\n    \"hasController\": [4, \"has-controller\"],\n    \"keyboardClose\": [4, \"keyboard-close\"],\n    \"enterAnimation\": [16],\n    \"leaveAnimation\": [16],\n    \"message\": [1],\n    \"cssClass\": [1, \"css-class\"],\n    \"duration\": [2],\n    \"backdropDismiss\": [4, \"backdrop-dismiss\"],\n    \"showBackdrop\": [4, \"show-backdrop\"],\n    \"spinner\": [1025],\n    \"translucent\": [4],\n    \"animated\": [4],\n    \"htmlAttributes\": [16],\n    \"isOpen\": [4, \"is-open\"],\n    \"trigger\": [1],\n    \"present\": [64],\n    \"dismiss\": [64],\n    \"onDidDismiss\": [64],\n    \"onWillDismiss\": [64]\n  }, undefined, {\n    \"isOpen\": [\"onIsOpenChange\"],\n    \"trigger\": [\"triggerChanged\"]\n  }]);\nfunction defineCustomElement$1() {\n  if (typeof customElements === \"undefined\") {\n    return;\n  }\n  const components = [\"ion-loading\", \"ion-backdrop\", \"ion-spinner\"];\n  components.forEach(tagName => { switch (tagName) {\n    case \"ion-loading\":\n      if (!customElements.get(tagName)) {\n        customElements.define(tagName, Loading);\n      }\n      break;\n    case \"ion-backdrop\":\n      if (!customElements.get(tagName)) {\n        defineCustomElement$3();\n      }\n      break;\n    case \"ion-spinner\":\n      if (!customElements.get(tagName)) {\n        defineCustomElement$2();\n      }\n      break;\n  } });\n}\n\nconst IonLoading = Loading;\nconst defineCustomElement = defineCustomElement$1;\n\nexport { IonLoading, defineCustomElement };\n",
+      "start": 1700143041500,
+      "end": 1700143041656,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1700143041656,
+      "end": 1700143041656,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1700143041656,
+      "end": 1700143041656,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1700143041656,
+      "end": 1700143041656,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1700143041656,
+      "end": 1700143041656,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1700143041656,
+      "end": 1700143041656,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1700143041656,
+      "end": 1700143041656,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1700143041656,
+      "end": 1700143041656,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1700143041656,
+      "end": 1700143041656,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1700143041656,
+      "end": 1700143041656,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1700143041656,
+      "end": 1700143041656,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1700143041656,
+      "end": 1700143041656,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1700143041656,
+      "end": 1700143041656,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1700143041656,
+      "end": 1700143041656,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1700143041656,
+      "end": 1700143041656,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1700143041656,
+      "end": 1700143041656,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1700143041656,
+      "end": 1700143041656,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1700143041656,
+      "end": 1700143041656,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1700143041656,
+      "end": 1700143041656,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1700143041656,
+      "end": 1700143041656,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1700143041657,
+      "end": 1700143041657,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1700143041657,
+      "end": 1700143041658,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1700143041658,
+      "end": 1700143041658,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1700143041658,
+      "end": 1700143041658,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1700143041658,
+      "end": 1700143041658,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1700143041658,
+      "end": 1700143041658,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1700143041658,
+      "end": 1700143041658,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1700143041658,
+      "end": 1700143041658,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1700143041658,
+      "end": 1700143041658,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1700143041658,
+      "end": 1700143041658,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1700143041658,
+      "end": 1700143041658,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1700143041658,
+      "end": 1700143041658,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1700143041658,
+      "end": 1700143041658,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1700143041658,
+      "end": 1700143041658,
+      "order": "normal"
+    }
+  ]
+}

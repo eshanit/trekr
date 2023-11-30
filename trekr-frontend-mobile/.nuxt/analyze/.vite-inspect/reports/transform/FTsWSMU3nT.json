@@ -1,0 +1,210 @@
+{
+  "resolvedId": "C:/Users/Admin/Documents/Projects/Tinashe/trekr/trekr-frontend/node_modules/@ionic/core/components/ion-tab-bar.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "/*!\n * (C) Ionic http://ionicframework.com - MIT License\n */\nimport { proxyCustomElement, HTMLElement, createEvent, h, Host } from '@stencil/core/internal/client';\nimport { c as createKeyboardController } from './keyboard-controller.js';\nimport { c as createColorClasses } from './theme.js';\nimport { b as getIonMode } from './ionic-global.js';\n\nconst tabBarIosCss = \":host{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;width:auto;padding-right:var(--ion-safe-area-right);padding-bottom:var(--ion-safe-area-bottom, 0);padding-left:var(--ion-safe-area-left);border-top:var(--border);background:var(--background);color:var(--color);text-align:center;contain:strict;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;z-index:10;-webkit-box-sizing:content-box !important;box-sizing:content-box !important}:host(.ion-color) ::slotted(ion-tab-button){--background-focused:var(--ion-color-shade);--color-selected:var(--ion-color-contrast)}:host(.ion-color) ::slotted(.tab-selected){color:var(--ion-color-contrast)}:host(.ion-color),:host(.ion-color) ::slotted(ion-tab-button){color:rgba(var(--ion-color-contrast-rgb), 0.7)}:host(.ion-color),:host(.ion-color) ::slotted(ion-tab-button){background:var(--ion-color-base)}:host(.ion-color) ::slotted(ion-tab-button.ion-focused),:host(.tab-bar-translucent) ::slotted(ion-tab-button.ion-focused){background:var(--background-focused)}:host(.tab-bar-translucent) ::slotted(ion-tab-button){background:transparent}:host([slot=top]){padding-top:var(--ion-safe-area-top, 0);padding-bottom:0;border-top:0;border-bottom:var(--border)}:host(.tab-bar-hidden){display:none !important}:host{--background:var(--ion-tab-bar-background, var(--ion-color-step-50, #f7f7f7));--background-focused:var(--ion-tab-bar-background-focused, #e0e0e0);--border:0.55px solid var(--ion-tab-bar-border-color, var(--ion-border-color, var(--ion-color-step-150, rgba(0, 0, 0, 0.2))));--color:var(--ion-tab-bar-color, var(--ion-color-step-600, #666666));--color-selected:var(--ion-tab-bar-color-selected, var(--ion-color-primary, #3880ff));height:50px}@supports ((-webkit-backdrop-filter: blur(0)) or (backdrop-filter: blur(0))){:host(.tab-bar-translucent){--background:rgba(var(--ion-background-color-rgb, 255, 255, 255), 0.8);-webkit-backdrop-filter:saturate(210%) blur(20px);backdrop-filter:saturate(210%) blur(20px)}:host(.ion-color.tab-bar-translucent){background:rgba(var(--ion-color-base-rgb), 0.8)}:host(.tab-bar-translucent) ::slotted(ion-tab-button.ion-focused){background:rgba(var(--ion-background-color-rgb, 255, 255, 255), 0.6)}}\";\n\nconst tabBarMdCss = \":host{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;width:auto;padding-right:var(--ion-safe-area-right);padding-bottom:var(--ion-safe-area-bottom, 0);padding-left:var(--ion-safe-area-left);border-top:var(--border);background:var(--background);color:var(--color);text-align:center;contain:strict;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;z-index:10;-webkit-box-sizing:content-box !important;box-sizing:content-box !important}:host(.ion-color) ::slotted(ion-tab-button){--background-focused:var(--ion-color-shade);--color-selected:var(--ion-color-contrast)}:host(.ion-color) ::slotted(.tab-selected){color:var(--ion-color-contrast)}:host(.ion-color),:host(.ion-color) ::slotted(ion-tab-button){color:rgba(var(--ion-color-contrast-rgb), 0.7)}:host(.ion-color),:host(.ion-color) ::slotted(ion-tab-button){background:var(--ion-color-base)}:host(.ion-color) ::slotted(ion-tab-button.ion-focused),:host(.tab-bar-translucent) ::slotted(ion-tab-button.ion-focused){background:var(--background-focused)}:host(.tab-bar-translucent) ::slotted(ion-tab-button){background:transparent}:host([slot=top]){padding-top:var(--ion-safe-area-top, 0);padding-bottom:0;border-top:0;border-bottom:var(--border)}:host(.tab-bar-hidden){display:none !important}:host{--background:var(--ion-tab-bar-background, var(--ion-background-color, #fff));--background-focused:var(--ion-tab-bar-background-focused, #e0e0e0);--border:1px solid var(--ion-tab-bar-border-color, var(--ion-border-color, var(--ion-color-step-150, rgba(0, 0, 0, 0.07))));--color:var(--ion-tab-bar-color, var(--ion-color-step-650, #595959));--color-selected:var(--ion-tab-bar-color-selected, var(--ion-color-primary, #3880ff));height:56px}\";\n\nconst TabBar = /*@__PURE__*/ proxyCustomElement(class TabBar extends HTMLElement {\n  constructor() {\n    super();\n    this.__registerHost();\n    this.__attachShadow();\n    this.ionTabBarChanged = createEvent(this, \"ionTabBarChanged\", 7);\n    this.ionTabBarLoaded = createEvent(this, \"ionTabBarLoaded\", 7);\n    this.keyboardCtrl = null;\n    this.keyboardVisible = false;\n    this.color = undefined;\n    this.selectedTab = undefined;\n    this.translucent = false;\n  }\n  selectedTabChanged() {\n    if (this.selectedTab !== undefined) {\n      this.ionTabBarChanged.emit({\n        tab: this.selectedTab,\n      });\n    }\n  }\n  componentWillLoad() {\n    this.selectedTabChanged();\n  }\n  async connectedCallback() {\n    this.keyboardCtrl = await createKeyboardController(async (keyboardOpen, waitForResize) => {\n      /**\n       * If the keyboard is hiding, then we need to wait\n       * for the webview to resize. Otherwise, the tab bar\n       * will flicker before the webview resizes.\n       */\n      if (keyboardOpen === false && waitForResize !== undefined) {\n        await waitForResize;\n      }\n      this.keyboardVisible = keyboardOpen; // trigger re-render by updating state\n    });\n  }\n  disconnectedCallback() {\n    if (this.keyboardCtrl) {\n      this.keyboardCtrl.destroy();\n    }\n  }\n  componentDidLoad() {\n    this.ionTabBarLoaded.emit();\n  }\n  render() {\n    const { color, translucent, keyboardVisible } = this;\n    const mode = getIonMode(this);\n    const shouldHide = keyboardVisible && this.el.getAttribute('slot') !== 'top';\n    return (h(Host, { role: \"tablist\", \"aria-hidden\": shouldHide ? 'true' : null, class: createColorClasses(color, {\n        [mode]: true,\n        'tab-bar-translucent': translucent,\n        'tab-bar-hidden': shouldHide,\n      }) }, h(\"slot\", null)));\n  }\n  get el() { return this; }\n  static get watchers() { return {\n    \"selectedTab\": [\"selectedTabChanged\"]\n  }; }\n  static get style() { return {\n    ios: tabBarIosCss,\n    md: tabBarMdCss\n  }; }\n}, [33, \"ion-tab-bar\", {\n    \"color\": [513],\n    \"selectedTab\": [1, \"selected-tab\"],\n    \"translucent\": [4],\n    \"keyboardVisible\": [32]\n  }, undefined, {\n    \"selectedTab\": [\"selectedTabChanged\"]\n  }]);\nfunction defineCustomElement$1() {\n  if (typeof customElements === \"undefined\") {\n    return;\n  }\n  const components = [\"ion-tab-bar\"];\n  components.forEach(tagName => { switch (tagName) {\n    case \"ion-tab-bar\":\n      if (!customElements.get(tagName)) {\n        customElements.define(tagName, TabBar);\n      }\n      break;\n  } });\n}\n\nconst IonTabBar = TabBar;\nconst defineCustomElement = defineCustomElement$1;\n\nexport { IonTabBar, defineCustomElement };\n",
+      "start": 1700143041460,
+      "end": 1700143041632,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1700143041633,
+      "end": 1700143041633,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1700143041633,
+      "end": 1700143041633,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1700143041633,
+      "end": 1700143041633,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1700143041633,
+      "end": 1700143041633,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1700143041633,
+      "end": 1700143041633,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1700143041633,
+      "end": 1700143041633,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1700143041633,
+      "end": 1700143041633,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1700143041633,
+      "end": 1700143041633,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1700143041633,
+      "end": 1700143041633,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1700143041633,
+      "end": 1700143041633,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1700143041633,
+      "end": 1700143041633,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1700143041633,
+      "end": 1700143041633,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1700143041633,
+      "end": 1700143041633,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1700143041633,
+      "end": 1700143041633,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1700143041633,
+      "end": 1700143041633,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1700143041633,
+      "end": 1700143041633,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1700143041633,
+      "end": 1700143041633,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1700143041633,
+      "end": 1700143041633,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1700143041633,
+      "end": 1700143041633,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1700143041633,
+      "end": 1700143041633,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1700143041633,
+      "end": 1700143041634,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1700143041634,
+      "end": 1700143041634,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1700143041634,
+      "end": 1700143041634,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1700143041634,
+      "end": 1700143041634,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1700143041634,
+      "end": 1700143041634,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1700143041634,
+      "end": 1700143041634,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1700143041634,
+      "end": 1700143041634,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1700143041634,
+      "end": 1700143041634,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1700143041635,
+      "end": 1700143041635,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1700143041635,
+      "end": 1700143041635,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1700143041635,
+      "end": 1700143041635,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1700143041635,
+      "end": 1700143041635,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1700143041635,
+      "end": 1700143041635,
+      "order": "normal"
+    }
+  ]
+}
