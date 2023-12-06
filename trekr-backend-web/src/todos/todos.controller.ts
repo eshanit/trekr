@@ -31,4 +31,13 @@ export class TodosController {
   remove(@Param('id') id: string) {
     return this.todosService.remove(+id);
   }
+
+  //from mobile app
+  @Get('user/:id')
+  findTodosForUser(@Param('id') id: string){
+    return this.todosService.findTodosForUser(id)
+  }
+
+
+
 }

@@ -36,6 +36,9 @@ let TodosController = class TodosController {
     remove(id) {
         return this.todosService.remove(+id);
     }
+    findTodosForUser(id) {
+        return this.todosService.findTodosForUser(id);
+    }
 };
 exports.TodosController = TodosController;
 __decorate([
@@ -73,6 +76,13 @@ __decorate([
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
 ], TodosController.prototype, "remove", null);
+__decorate([
+    (0, common_1.Get)('user/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", void 0)
+], TodosController.prototype, "findTodosForUser", null);
 exports.TodosController = TodosController = __decorate([
     (0, common_1.Controller)('todos'),
     __metadata("design:paramtypes", [todos_service_1.TodosService])

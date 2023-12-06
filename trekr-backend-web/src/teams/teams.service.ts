@@ -6,6 +6,7 @@ import { Observable, map } from 'rxjs';
 import { HttpService } from '@nestjs/axios';
 import { Team } from './entities/team.entity';
 import { ConfigService } from '@nestjs/config/dist';
+import { ObjectEncodingOptions } from 'fs';
 
 @Injectable()
 export class TeamsService {
@@ -95,5 +96,12 @@ export class TeamsService {
 
   remove(id: number) {
     return `This action removes a #${id} team`;
+  }
+
+  findTeamMembersByName(teamName: string) {
+    const teams =  this.findAll()
+    return  teams.pipe((map((team: Array<any>)=>{
+           return team.find(team => team.name === teamName).members
+    })))
   }
 }

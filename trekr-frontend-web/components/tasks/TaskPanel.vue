@@ -1,7 +1,10 @@
 <script setup lang="ts">
+import generateID from "@/composables/useCreateId";
+
 const showTeams = ref(false)
-const showUsers = ref(false)
+let showUsers = ref(false)
 const showTaskForm = ref({ key: null })
+let userInfo = ref(undefined)
 const emittedTodos = ref({
     newToDo: '',
     dateToDo: ''
@@ -29,7 +32,7 @@ const deleteElement = (el: string) => {
     toDos.value.splice(indx, 1);
 }
 
-const processToDos = (teamInfo: any, toDoDate: string, todoData: Array<Object>) => {
+const processToDos = async (teamInfo: any, toDoDate: string, todoData: Array<Object>) => {
 
     const tasks: any[] = []
     const vm: any[] = [];
@@ -37,14 +40,16 @@ const processToDos = (teamInfo: any, toDoDate: string, todoData: Array<Object>) 
     todoData.forEach(t => {
 
         vm.push({
+            id: generateID(),
             name: t,
-            status: 'incomplete'
+            isCompleted: false
         })
 
     })
 
 
     tasks.push({
+        id: generateID(),
         date: toDoDate,
         type: 'team',
         team: teamInfo.teamName,
@@ -54,9 +59,57 @@ const processToDos = (teamInfo: any, toDoDate: string, todoData: Array<Object>) 
 
     console.log('tasks', tasks, teamInfo.teamId)
 
-    useToDo.createTodosForTeam(teamInfo.teamId, tasks)
+    const create = await useToDo.createTodosForTeam(teamInfo.teamId, tasks).catch(err => console.log('error:',err))
+
+
+    // console.log('create', create)
+
+    // if(create.length !== 0) {
+    //     showTaskForm.value.key = null
+    // }
 
 }
+
+
+const processIndividualToDos = async (_userInfo: any, toDoDate: string, todoData: Array<Object>) => {
+
+    const vm: any[] = [];
+
+    todoData.forEach(t => {
+
+        vm.push({
+            id: generateID(),
+            name: t,
+            isCompleted: false
+        })
+
+    })
+
+
+    const tasks = {
+        id: generateID(),
+        date: toDoDate,
+        type: 'individual',
+        team: _userInfo.teamName,
+        createdBy: props.user.firstname,
+        tasks: vm
+    }
+
+    console.log('tasks', tasks, _userInfo.id)
+
+    const create = await useToDo.createTodosForUser(_userInfo.id, tasks)
+
+    console.log('create', create?.status.value)
+
+    if (create?.status.value === 'success') {
+
+        userInfo.value = undefined
+
+    }
+
+}
+
+
 
 </script>
 <template>
@@ -121,12 +174,67 @@ const processToDos = (teamInfo: any, toDoDate: string, todoData: Array<Object>) 
 
     <!--indviduals todo Allocation-->
     <div v-show="showUsers">
-        <TasksCardsTodoCard>
-            <template #body>
-                <TasksTablesUsers />
-            </template>
-        </TasksCardsTodoCard>
-        
+        <div v-if="!userInfo">
+            <div class="pb-5">
+                <UButton icon="i-heroicons-chevron-double-left-20-solid" color="purple" variant="soft"
+                    @click="showUsers = false">
+                    Back
+                </UButton>
+            </div>
+            <TasksCardsTodoCard>
+                <template #body>
+                    <TasksTablesUsers @emitted-user-id="userInfo = $event" />
+                </template>
+            </TasksCardsTodoCard>
+        </div>
+        <div v-else>
+            <div class="pb-5">
+                <UButton icon="i-heroicons-chevron-double-left-20-solid" color="purple" variant="soft"
+                    @click="userInfo = undefined">
+                    Back
+                </UButton>
+            </div>
+            <div class="grid grid-cols-2 gap-5">
+                <div>
+
+                    <TasksCardsTodoCard>
+                        <template #body>
+                            <TasksFormsIndividualTodoForm :date-for-to-do="dateToDo" :user-id="userInfo"
+                                @to-do="emittedTodos = $event" />
+                        </template>
+                    </TasksCardsTodoCard>
+                </div>
+                <div>
+                    <div class=" flex justify-between pb-7">
+                        <div class="text-orange">
+                            <strong>Tasks or Todos</strong>
+                        </div>
+                        <div class="text-teal-500 text-sm">
+                            {{ dateToDo }}
+                        </div>
+                        <div>
+                            <strong>Count:</strong> {{ toDos.length }}
+                        </div>
+                    </div>
+                    <div class=" flex justify-between text-sm  border-slate-200 border-8 p-3 " v-for="todo in toDos">
+                        <div class="text-cyan-950">{{ todo }}</div>
+                        <div class="text-red-500 cursor-pointer" @click="deleteElement(todo)">
+                            <UIcon name="i-heroicons-trash" />
+                        </div>
+                    </div>
+                    <div class="flex justify-between pt-5 text-sm" v-if="toDos.length > 0">
+                        <div> If satisfied with the tasks, click the Allocate button:</div>
+                        <UButton icon="i-heroicons-chevron-double-up-20-solid" color="sky" variant="solid"
+                            @click="processIndividualToDos(userInfo, dateToDo, toDos)">
+                            Allocate
+                        </UButton>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
     </div>
 
 

@@ -6,6 +6,7 @@ interface  ITeamMember {
     readonly email: string,
     readonly dateJoined: string,
     readonly teams: Array<Object>,
+    readonly todos: Array<Object>,
     readonly mobileAcess: string,
     readonly createdAt: number
 

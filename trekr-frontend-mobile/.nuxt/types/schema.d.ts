@@ -20,7 +20,7 @@ declare module 'nuxt/schema' {
    },
   }
   interface PublicRuntimeConfig {
-
+   nestServerUrl: string,
   }
 }
 declare module 'vue' {

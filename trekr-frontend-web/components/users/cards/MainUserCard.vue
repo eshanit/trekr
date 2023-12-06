@@ -1,6 +1,6 @@
 <script setup lang="ts">
 
-const emittedUserId = ref('')
+const emittedUserId = ref()
 const showEditForm = ref(false)
 
 const userStore = useUsersStore();
@@ -78,7 +78,7 @@ defineEmits(['addUser'])
         </div>
         <div v-else>
             <div v-if="!showEditForm">
-                <UsersCardsUserProfile :user-id="emittedUserId" @emitted-user-id="emittedUserId = $event" @show-edit="showEditForm = $event" />
+                <UsersCardsUserProfile :user-id="emittedUserId.id" @emitted-user-id="emittedUserId = $event" @show-edit="showEditForm = $event" />
             </div>
             <div v-else>
                 <UsersFormsUpdateUser :user-id="emittedUserId" @close-form="showEditForm = $event"/>

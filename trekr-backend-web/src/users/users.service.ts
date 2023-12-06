@@ -60,6 +60,12 @@ export class UsersService {
             return el.firstname != undefined;
           });
 
+          newArray.forEach(user=>{
+            if(user.teams.length > 0) {
+              user.teamName = user.teams[0].name
+            }  
+        })
+
           return newArray;
         }),
       );

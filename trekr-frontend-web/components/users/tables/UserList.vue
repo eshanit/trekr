@@ -57,7 +57,12 @@ defineEmits(['showUserInformation'])
             <template #actions-data="{ row }">
                 <!-- <NuxtLink :to="{ name: 'mentees-id', params: { id: row._id } }"> -->
                 <UButton 
-                    @click="$emit('showUserInformation', row._id)" 
+                    @click="$emit('showUserInformation', {
+                        id: row._id,
+                        firstname: row.firstname,
+                        lastname: row.lastname,
+                        team: row.teamName
+                        })" 
                     :items="items(row)" 
                     :icon="buttonInfo.icon"
                     :size="buttonInfo.size" 

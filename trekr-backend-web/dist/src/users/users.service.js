@@ -49,6 +49,11 @@ let UsersService = class UsersService {
             let newArray = vm.filter(function (el) {
                 return el.firstname != undefined;
             });
+            newArray.forEach(user => {
+                if (user.teams.length > 0) {
+                    user.teamName = user.teams[0].name;
+                }
+            });
             return newArray;
         }));
     }

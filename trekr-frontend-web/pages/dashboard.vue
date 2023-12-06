@@ -26,7 +26,7 @@ const emittedValue = ref('dashboard');
                         <UsersUserPanel />
                     </div>
                     <div v-else-if="emittedValue == 'tasks'">
-                        <TasksTaskPanel :user="user" />
+                        <TasksTaskPanel :user="user"/>
                     </div>
                     <div v-else-if="emittedValue == 'monitoring'">
                         <MonitoringPanel  @teamId="emitFromMonitoring = $event"    :teamId="emitFromMonitoring"    />

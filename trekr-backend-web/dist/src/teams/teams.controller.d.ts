@@ -9,4 +9,5 @@ export declare class TeamsController {
     findOne(id: string): import("rxjs").Observable<any>;
     update(id: string, updateTeamDto: UpdateTeamDto): import("rxjs").Observable<any>;
     remove(id: string): string;
+    findTeamMembersByName(teamName: string): import("rxjs").Observable<any>;
 }

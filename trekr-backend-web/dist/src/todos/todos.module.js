@@ -10,11 +10,13 @@ exports.TodosModule = void 0;
 const common_1 = require("@nestjs/common");
 const todos_service_1 = require("./todos.service");
 const todos_controller_1 = require("./todos.controller");
+const users_module_1 = require("../users/users.module");
 let TodosModule = class TodosModule {
 };
 exports.TodosModule = TodosModule;
 exports.TodosModule = TodosModule = __decorate([
     (0, common_1.Module)({
+        imports: [users_module_1.UsersModule],
         controllers: [todos_controller_1.TodosController],
         providers: [todos_service_1.TodosService],
     })

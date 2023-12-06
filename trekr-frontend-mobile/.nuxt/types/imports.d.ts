@@ -93,6 +93,7 @@ declare global {
   const toRaw: typeof import('../../node_modules/vue')['toRaw']
   const toRef: typeof import('../../node_modules/vue')['toRef']
   const toRefs: typeof import('../../node_modules/vue')['toRefs']
+  const toTypedSchema: typeof import('../../node_modules/@vee-validate/yup/dist/vee-validate-yup')['toTypedSchema']
   const toValue: typeof import('../../node_modules/vue')['toValue']
   const triggerRef: typeof import('../../node_modules/vue')['triggerRef']
   const unref: typeof import('../../node_modules/vue')['unref']
@@ -132,6 +133,7 @@ declare global {
   const useNuxtApp: typeof import('../../node_modules/nuxt/dist/app/nuxt')['useNuxtApp']
   const useNuxtData: typeof import('../../node_modules/nuxt/dist/app/composables/asyncData')['useNuxtData']
   const useNuxtDevTools: typeof import('../../node_modules/@nuxt/devtools/dist/runtime/use-nuxt-devtools')['useNuxtDevTools']
+  const usePercertageCompletedTasks: typeof import('../../composables/usePercentageCompletedTasks')['usePercertageCompletedTasks']
   const usePinia: typeof import('../../node_modules/@pinia/nuxt/dist/runtime/composables')['usePinia']
   const usePopper: typeof import('../../node_modules/@nuxt/ui/dist/runtime/composables/usePopper')['usePopper']
   const useRequestEvent: typeof import('../../node_modules/nuxt/dist/app/composables/ssr')['useRequestEvent']
@@ -153,8 +155,10 @@ declare global {
   const useSubmitForm: typeof import('../../node_modules/vee-validate/dist/vee-validate')['useSubmitForm']
   const useTimer: typeof import('../../node_modules/@nuxt/ui/dist/runtime/composables/useTimer')['useTimer']
   const useToast: typeof import('../../node_modules/@nuxt/ui/dist/runtime/composables/useToast')['useToast']
+  const useTodoStore: typeof import('../../stores/todos')['useTodoStore']
   const useTransitionState: typeof import('../../node_modules/vue')['useTransitionState']
   const useUI: typeof import('../../node_modules/@nuxt/ui/dist/runtime/composables/useUI')['useUI']
+  const useUsersStore: typeof import('../../stores/users')['useUsersStore']
   const useValidateField: typeof import('../../node_modules/vee-validate/dist/vee-validate')['useValidateField']
   const useValidateForm: typeof import('../../node_modules/vee-validate/dist/vee-validate')['useValidateForm']
   const watch: typeof import('../../node_modules/vue')['watch']
@@ -269,6 +273,7 @@ declare module 'vue' {
     readonly toRaw: UnwrapRef<typeof import('../../node_modules/vue')['toRaw']>
     readonly toRef: UnwrapRef<typeof import('../../node_modules/vue')['toRef']>
     readonly toRefs: UnwrapRef<typeof import('../../node_modules/vue')['toRefs']>
+    readonly toTypedSchema: UnwrapRef<typeof import('../../node_modules/@vee-validate/yup/dist/vee-validate-yup')['toTypedSchema']>
     readonly toValue: UnwrapRef<typeof import('../../node_modules/vue')['toValue']>
     readonly triggerRef: UnwrapRef<typeof import('../../node_modules/vue')['triggerRef']>
     readonly unref: UnwrapRef<typeof import('../../node_modules/vue')['unref']>
@@ -308,6 +313,7 @@ declare module 'vue' {
     readonly useNuxtApp: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/nuxt')['useNuxtApp']>
     readonly useNuxtData: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/asyncData')['useNuxtData']>
     readonly useNuxtDevTools: UnwrapRef<typeof import('../../node_modules/@nuxt/devtools/dist/runtime/use-nuxt-devtools')['useNuxtDevTools']>
+    readonly usePercertageCompletedTasks: UnwrapRef<typeof import('../../composables/usePercentageCompletedTasks')['usePercertageCompletedTasks']>
     readonly usePinia: UnwrapRef<typeof import('../../node_modules/@pinia/nuxt/dist/runtime/composables')['usePinia']>
     readonly usePopper: UnwrapRef<typeof import('../../node_modules/@nuxt/ui/dist/runtime/composables/usePopper')['usePopper']>
     readonly useRequestEvent: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/ssr')['useRequestEvent']>
@@ -329,8 +335,10 @@ declare module 'vue' {
     readonly useSubmitForm: UnwrapRef<typeof import('../../node_modules/vee-validate/dist/vee-validate')['useSubmitForm']>
     readonly useTimer: UnwrapRef<typeof import('../../node_modules/@nuxt/ui/dist/runtime/composables/useTimer')['useTimer']>
     readonly useToast: UnwrapRef<typeof import('../../node_modules/@nuxt/ui/dist/runtime/composables/useToast')['useToast']>
+    readonly useTodoStore: UnwrapRef<typeof import('../../stores/todos')['useTodoStore']>
     readonly useTransitionState: UnwrapRef<typeof import('../../node_modules/vue')['useTransitionState']>
     readonly useUI: UnwrapRef<typeof import('../../node_modules/@nuxt/ui/dist/runtime/composables/useUI')['useUI']>
+    readonly useUsersStore: UnwrapRef<typeof import('../../stores/users')['useUsersStore']>
     readonly useValidateField: UnwrapRef<typeof import('../../node_modules/vee-validate/dist/vee-validate')['useValidateField']>
     readonly useValidateForm: UnwrapRef<typeof import('../../node_modules/vee-validate/dist/vee-validate')['useValidateForm']>
     readonly watch: UnwrapRef<typeof import('../../node_modules/vue')['watch']>
@@ -439,6 +447,7 @@ declare module '@vue/runtime-core' {
     readonly toRaw: UnwrapRef<typeof import('../../node_modules/vue')['toRaw']>
     readonly toRef: UnwrapRef<typeof import('../../node_modules/vue')['toRef']>
     readonly toRefs: UnwrapRef<typeof import('../../node_modules/vue')['toRefs']>
+    readonly toTypedSchema: UnwrapRef<typeof import('../../node_modules/@vee-validate/yup/dist/vee-validate-yup')['toTypedSchema']>
     readonly toValue: UnwrapRef<typeof import('../../node_modules/vue')['toValue']>
     readonly triggerRef: UnwrapRef<typeof import('../../node_modules/vue')['triggerRef']>
     readonly unref: UnwrapRef<typeof import('../../node_modules/vue')['unref']>
@@ -478,6 +487,7 @@ declare module '@vue/runtime-core' {
     readonly useNuxtApp: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/nuxt')['useNuxtApp']>
     readonly useNuxtData: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/asyncData')['useNuxtData']>
     readonly useNuxtDevTools: UnwrapRef<typeof import('../../node_modules/@nuxt/devtools/dist/runtime/use-nuxt-devtools')['useNuxtDevTools']>
+    readonly usePercertageCompletedTasks: UnwrapRef<typeof import('../../composables/usePercentageCompletedTasks')['usePercertageCompletedTasks']>
     readonly usePinia: UnwrapRef<typeof import('../../node_modules/@pinia/nuxt/dist/runtime/composables')['usePinia']>
     readonly usePopper: UnwrapRef<typeof import('../../node_modules/@nuxt/ui/dist/runtime/composables/usePopper')['usePopper']>
     readonly useRequestEvent: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/ssr')['useRequestEvent']>
@@ -499,8 +509,10 @@ declare module '@vue/runtime-core' {
     readonly useSubmitForm: UnwrapRef<typeof import('../../node_modules/vee-validate/dist/vee-validate')['useSubmitForm']>
     readonly useTimer: UnwrapRef<typeof import('../../node_modules/@nuxt/ui/dist/runtime/composables/useTimer')['useTimer']>
     readonly useToast: UnwrapRef<typeof import('../../node_modules/@nuxt/ui/dist/runtime/composables/useToast')['useToast']>
+    readonly useTodoStore: UnwrapRef<typeof import('../../stores/todos')['useTodoStore']>
     readonly useTransitionState: UnwrapRef<typeof import('../../node_modules/vue')['useTransitionState']>
     readonly useUI: UnwrapRef<typeof import('../../node_modules/@nuxt/ui/dist/runtime/composables/useUI')['useUI']>
+    readonly useUsersStore: UnwrapRef<typeof import('../../stores/users')['useUsersStore']>
     readonly useValidateField: UnwrapRef<typeof import('../../node_modules/vee-validate/dist/vee-validate')['useValidateField']>
     readonly useValidateForm: UnwrapRef<typeof import('../../node_modules/vee-validate/dist/vee-validate')['useValidateForm']>
     readonly watch: UnwrapRef<typeof import('../../node_modules/vue')['watch']>

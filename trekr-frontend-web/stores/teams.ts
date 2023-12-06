@@ -51,9 +51,6 @@ export const useTeamStore = defineStore("teams", {
           },
         }
       );
-    },
-
-    async fetchParticularTeam(teamId: string) {
-    },
+    }
   },
 });

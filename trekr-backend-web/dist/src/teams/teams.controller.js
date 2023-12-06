@@ -36,6 +36,9 @@ let TeamsController = class TeamsController {
     remove(id) {
         return this.teamsService.remove(+id);
     }
+    findTeamMembersByName(teamName) {
+        return this.teamsService.findTeamMembersByName(teamName);
+    }
 };
 exports.TeamsController = TeamsController;
 __decorate([
@@ -73,6 +76,13 @@ __decorate([
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
 ], TeamsController.prototype, "remove", null);
+__decorate([
+    (0, common_1.Get)('name/:teamName'),
+    __param(0, (0, common_1.Param)('teamName')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", void 0)
+], TeamsController.prototype, "findTeamMembersByName", null);
 exports.TeamsController = TeamsController = __decorate([
     (0, common_1.Controller)('teams'),
     __metadata("design:paramtypes", [teams_service_1.TeamsService])

@@ -31,4 +31,11 @@ export class TeamsController {
   remove(@Param('id') id: string) {
     return this.teamsService.remove(+id);
   }
+
+  //from mobile app
+  @Get('name/:teamName')
+  findTeamMembersByName(@Param('teamName') teamName: string){
+    return this.teamsService. findTeamMembersByName(teamName);
+  }
+
 }

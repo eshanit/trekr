@@ -1,7 +1,11 @@
+
+import type { getOverlappingDaysInIntervals } from 'date-fns';
 <script setup lang="ts">
 const userStore = useUsersStore();
 
 const { data: users } = await userStore.fetchAllUsers();
+
+const emittedUserId = ref('')
 
 //columns
 const columns = [
@@ -18,8 +22,8 @@ const columns = [
         label: 'Gender',
     },
     {
-        key: 'Team',
-        label: 'team',
+        key: 'teamName',
+        label: 'Team',
     },
     {
         key: 'actions',
@@ -35,9 +39,14 @@ const buttonInfo = {
     label: 'Create Tasks',
 }
 
+watch(emittedUserId,(newValue,oldValue) =>{
+  emit('emittedUserId',newValue)
+})
+
+const emit = defineEmits(['emittedUserId'])
+
 
 </script>
-
 <template>
     <UsersTablesUserList 
     :users="users" 

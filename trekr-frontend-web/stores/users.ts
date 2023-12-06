@@ -62,6 +62,7 @@ export const useUsersStore = defineStore("users", {
             name: team.name,
           },
         ],
+        todos: dataObj.todos,
         mobileAcess: dataObj.mobileAcess,
         createdAt: createdAt,
         updatedAt: Date.now(),
@@ -98,6 +99,7 @@ export const useUsersStore = defineStore("users", {
             name: team.name,
           },
         ],
+        todos:[],
         mobileAcess: mobileAcess,
         createdAt: Date.now()
       }

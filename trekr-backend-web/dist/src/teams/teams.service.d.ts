@@ -14,4 +14,5 @@ export declare class TeamsService {
     findOne(id: string): Observable<AxiosResponse<Team[]> | any>;
     update(id: string, updateTeamDto: UpdateTeamDto): Observable<any>;
     remove(id: number): string;
+    findTeamMembersByName(teamName: string): Observable<any>;
 }

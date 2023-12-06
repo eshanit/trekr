@@ -9,4 +9,5 @@ export declare class TodosController {
     findOne(id: string): string;
     update(id: string, updateTodoDto: UpdateTodoDto): string;
     remove(id: string): string;
+    findTodosForUser(id: string): Promise<import("rxjs").Observable<any>>;
 }

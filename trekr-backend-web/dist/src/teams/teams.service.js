@@ -75,6 +75,12 @@ let TeamsService = class TeamsService {
     remove(id) {
         return `This action removes a #${id} team`;
     }
+    findTeamMembersByName(teamName) {
+        const teams = this.findAll();
+        return teams.pipe(((0, rxjs_1.map)((team) => {
+            return team.find(team => team.name === teamName).members;
+        })));
+    }
 };
 exports.TeamsService = TeamsService;
 exports.TeamsService = TeamsService = __decorate([
